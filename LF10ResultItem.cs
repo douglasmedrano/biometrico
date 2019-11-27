@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace LF10Demo
+namespace biometrico
 {
   /// <summary>
   /// Segment type like finger or type of cupturing like right four prints...

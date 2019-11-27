@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dermalog.AFIS.FourprintSegmentation</name>
+    </assembly>
+    <members>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.DibUtil.ImageFromDibPtr(System.IntPtr)">
+            <summary>
+            Get .NET 'Bitmap' object from memory DIB via stream constructor.
+            This should work for most DIBs.
+            </summary>
+            <param name="dibPtr">Pointer to memory DIB, starting with BITMAPINFOHEADER.</param>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.DibUtil.BufferToHandle(System.Byte[],System.Int32@)">
+            <summary>
+            Converts an byte array into a handle.
+            </summary>
+            <param name="imageBuffer">image (WSQ,jp2,etc) as byte array</param>
+            <param name="size">the size of allocated handle</param>
+            <returns>handle of buffer</returns>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.DibUtil.ImageToBuffer(System.Drawing.Image)">
+            <summary>
+            Converts an <see cref="T:System.Drawing.Image"/>to a buffer.
+            </summary>
+            <param name="image">The image.</param>
+            <returns>returns a buffer of bitmap memory file.</returns>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.DibUtil.AdjustInfoHeader(Dermalog.AFIS.FourprintSegmentation.BITMAPINFOHEADER)">
+            <summary>
+            Adjusts the info header.
+            </summary>
+            <param name="bmi">The <see cref="T:Dermalog.AFIS.FourprintSegmentation.BITMAPINFOHEADER"/>.</param>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.DibUtil.ImageToDibPtr(System.Drawing.Image,System.Int32@)">
+            <summary>
+            Images to dib PTR.
+            </summary>
+            <param name="image">The image.</param>
+            <returns>Pointer to Dib image</returns>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.DibUtil.RawSerializeInto(System.Object,System.Byte[])">
+            <summary> Copy structure into Byte-Array. </summary>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.BITMAPFILEHEADER">
+            <summary>
+            Encapsulate native <see cref="T:Dermalog.AFIS.FourprintSegmentation.BITMAPFILEHEADER"/> structure.
+            </summary>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.BITMAPINFOHEADER">
+            <summary>
+            Encapsulate native <see cref="T:Dermalog.AFIS.FourprintSegmentation.BITMAPINFOHEADER"/> structure.
+            </summary>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.NamespaceDoc">
+            <summary>
+            The Dermalog.AFIS.FourprintSegmentation namespace provides classes
+            to segment a fourprint image into single ﬁnger segments.
+            <see cref="N:Dermalog.AFIS.FourprintSegmentation"/>, <see cref="T:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint"/>
+            </summary>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.FourprintSegmenation">
+            <summary>
+            This class provides functionality to seprates fingertips form an Fourprint image
+            made by DERMALOG live scanner.
+            </summary>
+            /// <remarks> Please don't use this SDK for seperating finger tips form an image made by Flatbed scanner.</remarks>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegmenation.#ctor">
+            <summary>
+            creates a new instance of <see cref="T:Dermalog.AFIS.FourprintSegmentation.FourprintSegmenation"/> class.
+            </summary>
+            <exception cref="T:Dermalog.AFIS.FourprintSegmentation.LicenseException">Throws when DERMALOG scanner or Licenser installed on computer</exception>
+            <exception cref="T:System.DllNotFoundException">This exception throws if the native library cannot be loaded.</exception>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegmenation.Dispose">
+            <summary>
+             This method releases allocated resources
+             </summary>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegmenation.Dispose(System.Boolean)">
+            <summary>
+             Dispose(bool disposing) executes in two distinct scenarios.
+             If disposing equals true, the method has been called directly
+             or indirectly by a user's code. Managed and unmanaged resources
+             can be disposed.
+             If disposing equals false, the method has been called by the
+             runtime from inside the finalizer and you should not reference
+             other objects. Only unmanaged resources can be disposed.
+             </summary>
+             <param name="disposing">false or true</param>
+             <exception cref="T:System.DllNotFoundException">Accures if the nessary libraries are missing</exception>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegmenation.GetSegmentationCount(System.Drawing.Image)">
+            <summary>
+            Gets the count of segments in a 4/2print image.
+            </summary>
+            <param name="image">Four or 2 Print image</param>
+            <returns>segments count</returns>
+            <exception cref="T:System.NullReferenceException">Accures if the cref="image" is null</exception>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegmenation.GetSegmentedFingerprint(System.UInt32)">
+             <summary>
+             Gets <see cref="T:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint"/> at the given index.
+             </summary>
+             <param name="index">index of segmentated fingerprint <see cref="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegmenation.GetSegmentationCount(System.Drawing.Image)"/></param>
+            <returns>Returns <see cref="T:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint"/></returns>
+             <exception cref="T:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationException">Occures when the segmentation process fails</exception>
+        </member>
+        <member name="P:Dermalog.AFIS.FourprintSegmentation.FourprintSegmenation.Version">
+            <summary>
+            Gets the version of underlaying segmentation engine.
+            </summary>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.HandPositions">
+            <summary>
+            Hand indicator Right, Left, Thubms and unknown.
+            </summary>
+        </member>
+        <member name="F:Dermalog.AFIS.FourprintSegmentation.HandPositions.Unknown">
+            <summary>
+            Unknown position
+            </summary>
+        </member>
+        <member name="F:Dermalog.AFIS.FourprintSegmentation.HandPositions.Unkown">
+            <summary>
+            Unknown
+            <remarks>This is obsolete</remarks>
+            </summary>
+        </member>
+        <member name="F:Dermalog.AFIS.FourprintSegmentation.HandPositions.Right">
+            <summary>
+            Right hand
+            </summary>
+        </member>
+        <member name="F:Dermalog.AFIS.FourprintSegmentation.HandPositions.Left">
+            <summary>
+            Left hand
+            </summary>
+        </member>
+        <member name="F:Dermalog.AFIS.FourprintSegmentation.HandPositions.Thumbs">
+            <summary>
+            Thumb print(s)
+            </summary>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.Win32">
+            <summary>
+            Low level API is necessary for loading DLLs dynamically at runtime.
+            </summary>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint">
+            <summary>
+            This class holds data produced by <see cref="N:Dermalog.AFIS.FourprintSegmentation"/>.
+            </summary>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint.#ctor(System.Byte[],System.UInt32,System.Int32,System.Drawing.Rectangle)">
+            <summary>
+            creates a new instace of <see cref="T:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint"/>
+            </summary>
+            <param name="fingerprintImage">Fingerprint image</param>
+            <param name="fingerprintPosition">The position of fingerprint</param>
+            <param name="hand">The hand detected by Segmentation /&gt;</param>
+            <param name="rectFingerprint">This rectangle shows the position of fingerprint in Fourpirnt image</param>
+        </member>
+        <member name="P:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint.Image">
+            <summary>
+            Gets the image of fingerprint.
+            </summary>
+        </member>
+        <member name="P:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint.ImageData">
+            <summary>
+            Gets the image dat of fingerprint (BITMAPFILEHEADER).
+            </summary>
+        </member>
+        <member name="P:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint.Position">
+            <summary>
+            Gets/Sets the positon of fingerprint.
+            </summary>
+        </member>
+        <member name="P:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint.Rect">
+            <summary>
+            gets the rectangle position of Fingerprint segment in 4/2 prints image.
+            </summary>
+        </member>
+        <member name="P:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint.Hand">
+            <summary>
+            Gets which hand is detected <see cref="P:Dermalog.AFIS.FourprintSegmentation.SegmentedFingerprint.Hand"/>
+            </summary>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.LicenseException">
+            <summary>
+            This exception occurs when no SDK License is available on target machine.
+            <list type="bullet">
+            <item>No DERMALOG Scanner is connected into the PC</item>
+            <item>DERMALOG Licenser is not installed on system</item>
+            <item>DERMALOG Licenser is installed but no license exist for 
+            this SDK</item>
+            </list>
+            </summary>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationExceptionBase">
+            <summary>
+            Base Exception class for Segmentation
+            </summary>
+        </member>
+        <member name="F:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationExceptionBase._errorCode">
+            <summary>
+            Error nummber from base API
+            </summary>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationExceptionBase.#ctor(System.Int32,System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationExceptionBase"/>
+            </summary>
+            <param name="error">Error number from native SDK.</param>
+            <param name="message">Exception message</param>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationExceptionBase.#ctor(System.Int32,System.String,System.Exception)">
+            <summary>
+            Creates a new instance of <see cref="T:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationExceptionBase"/>
+            </summary>
+            <param name="error">Error number from native SDK.</param>
+            <param name="message">Exception message</param>
+            <param name="innerException">Internal exception</param>
+        </member>
+        <member name="P:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationExceptionBase.ErrorCode">
+            <summary>
+            Gets the error code received from base SDK
+            </summary>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.LicenseException.#ctor(System.Int32,System.String)">
+            <summary>
+            Creates a new instace of <see cref="T:Dermalog.AFIS.FourprintSegmentation.LicenseException"/>
+            </summary>
+            <param name="error">Native API error code</param>
+            <param name="message">Error message</param>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationProperties">
+            <summary>
+            
+            \author Raul Chitic
+            \date 12. Jan. 2015
+            
+            This class enables access to the fourprint segmentation properties.
+            Actually it supports only LongA properties, therefore it throws an
+            exception for property FS2_PR_SEGMENTATION_VERSION (String).
+            Furthermore the properties FS2_PR_SEGMENTATION_FINGER1ONPLATE up to
+            FS2_PR_SEGMENTATION_FINGER4ONPLATE are read only. 
+            
+            Use only the []-operator for getting and setting properties!
+            e.g.:
+            long nValue = Properties[FS2_PR_SEGMENTATION_FINGER_MIN_WIDTH];
+            Properties[FS2_PR_SEGMENTATION_FINGER_MIN_WIDTH] = 400;
+            
+            </summary>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.FourprintSegWrapper">
+            <summary>
+            This class encapsulates the functionality of
+            4PrintSegmentation native AFPI
+            </summary>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegWrapper.GetErrorDescription(System.Int32)">
+            <summary>
+            Converts the given error number to its description.
+            </summary>
+            <param name="error">Error level from native SDK</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegWrapper.GenerateException(System.Int32)">
+            <summary>
+            Translates error code from API to .Net exception
+            </summary>
+            <param name="error">Error code from native API.</param>
+        </member>
+        <member name="T:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationException">
+            <summary>
+            The exception that is thrown when an error happens during NIST Quality
+            processing.
+            </summary>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationException.#ctor(System.Int32,System.String)">
+            <summary>
+            Creates a new instace of <see cref="T:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationException"/>
+            </summary>
+            <param name="error">Native API error code</param>
+            <param name="message">Error message</param>
+        </member>
+        <member name="M:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationException.#ctor(System.Int32,System.String,System.Exception)">
+            <summary>
+            Creates a new instace of <see cref="T:Dermalog.AFIS.FourprintSegmentation.FourprintSegmentationException"/>
+            </summary>
+            <param name="error">Native API error code</param>
+            <param name="message">Error message</param>
+            <param name="innerException">The exception that is the cause of the current exception</param>
+        </member>
+    </members>
+</doc>

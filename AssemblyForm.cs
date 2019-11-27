@@ -3,7 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace LF10Demo
+namespace biometrico
 {
   /// <summary>
   /// This Form show loaded assemblys of this application.
@@ -49,5 +49,10 @@ namespace LF10Demo
 				throw;
 			}
 		}
+
+        private void assemblyGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
 	}
 }

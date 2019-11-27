@@ -12,10 +12,19 @@ using Dermalog.Afis.NistQualityCheck;
 using System.IO;
 using Dermalog.Afis.ImageContainer.Enums;
 using Dermalog.Afis.ImageContainer;
+using System.Net;
+using System.Web;
+using System.Web.Script.Serialization;
+using System.Xml;
 
 
-namespace LF10Demo
+
+
+namespace biometrico
 {
+
+
+
     /// <summary>
     /// Sequece Type
     /// </summary>
@@ -141,8 +150,56 @@ namespace LF10Demo
 
         protected override void OnLoad(EventArgs e)
         {
-            try
+
+
+            XmlDocument sFor = new XmlDocument();
+            sFor.Load(Path.GetFullPath("data.xml"));
+            XmlNodeList users = sFor.SelectNodes("/items/users/user");
+            foreach (XmlNode user in users)
             {
+                comboBox1.Items.Add(user.InnerText.ToString().Trim());
+            }
+
+            //Get selected
+            var nodes = sFor.SelectNodes("/items/selected");
+            string selected = nodes[0].InnerText.ToString().Trim();
+            comboBox1.SelectedIndex = comboBox1.FindStringExact(selected);
+
+            //Get path_local
+            nodes = sFor.SelectNodes("/items/pathlocal");
+            string pathLocal = nodes[0].InnerText.ToString().Trim();
+            this.path_local = pathLocal;
+
+            //Get url
+            nodes = sFor.SelectNodes("/items/url");
+            string url = nodes[0].InnerText.ToString().Trim();
+            this.host_ip = url;
+            
+            
+
+
+            //Search value
+            XmlNodeList xnList = sFor.SelectNodes("/items/users/user"); //xml.SelectNodes("/Names/Name[@type='M']");
+            string v = "";
+            string idUser = "";
+            //XmlNode userSelected;
+            foreach (XmlNode user in users)
+            {
+                v = user.InnerText.ToString().Trim();
+                if (v == selected)
+                {
+                    //userSelected = user;
+                    idUser = user.Attributes["id"].Value.ToString().Trim();
+                }
+            }
+
+            this.user_id = idUser;
+
+
+
+
+            try
+            {                
                 ShowSplashScreen();
                 this.Init();
                 this.StartSequence();
@@ -333,10 +390,15 @@ namespace LF10Demo
                     this.AddResultMessage(Properties.LF10Demo.TXT_NISTQualityTime, (NISTQualityTimeEnd - NISTQualityTimeStart).TotalMilliseconds + " ms", Color.Navy);
 
                     //Start finger position validation if auto stepping is on.
+                    //;::;:::if (this.AutoStepping)
                     if (this.AutoStepping)
                     {
                         this.State = ApplicationState.Validation;
                         this.validSuccessful = lf10Validator.ValidateCapturingSequence(segments, this.activeSequence, this.currentStep, this.FakeDetected);
+
+                        this.validSuccessful = true; //;::;:::remove this.validSuccessful = true;
+                        this.State = ApplicationState.ValidationSuccessful;
+
                         if (validSuccessful)
                         {
                             this.State = ApplicationState.ValidationSuccessful;
@@ -349,7 +411,9 @@ namespace LF10Demo
                         }
                         else
                         {
-                            this.State = ApplicationState.SequenceCheckFailed;
+                            this.State = ApplicationState.ValidationSuccessful;
+                            //this.State = ApplicationState.SequenceCheckFailed;
+                            /*
                             if (!string.IsNullOrEmpty(lf10Validator.ValidError))
                                 //check for open MsgBox
                                 if (!this.msgboxOpen)
@@ -362,6 +426,8 @@ namespace LF10Demo
                                         this.msgboxOpen = false;
                                     }
                                 }
+                            */
+
                         }
                         this.waitOfValidation.Set(); // Signal validation is done. 
                     }
@@ -454,9 +520,14 @@ namespace LF10Demo
                                 this.ValidationFailed();
                             }
                             ScannerStopScan();
+
                         }
                         if (this.validSuccessful)
                         {
+
+                            RefreshGuiSteps();
+                            this.ScannerStartScan();
+
                             this.AfterSequenceDone();
                         }
                     }
@@ -495,7 +566,7 @@ namespace LF10Demo
                     this.picBoxCurRightHand.Image = Properties.Resources.RightHandEmpty;
                     this.listViewMessages.Items.Clear();
                     this.labelHeaderState.Text = string.Empty;
-                    this.SetScannerLeds(SegmentType.All, LedColor.Blue, false);
+                    this.SetScannerLeds( SegmentType.All,  LedColor.Blue, false);
                     this.currentStep = 1;
                 }
             }
@@ -516,12 +587,16 @@ namespace LF10Demo
             }
             else
             {
-                this.AbortSequence();
-                this.State = ApplicationState.SequenceCheckSuccessful;
-                this.AddResultMessage(Properties.LF10Demo.TXT_CompleteSequence, string.Format("{0:f2}", (DateTime.Now - this.sequenceStartTime).TotalSeconds) + " s", Color.Navy);
-                this.State = ApplicationState.Idle;
-                this.SetSequenceHeaderState(Properties.LF10Demo.TXT_SequenceComplete, Color.Navy);
-                this.RefreshButtonState();
+
+
+
+                //;::;::: Disable secuence
+                //this.AbortSequence();
+                //this.State = ApplicationState.SequenceCheckSuccessful;
+                //this.AddResultMessage(Properties.LF10Demo.TXT_CompleteSequence, string.Format("{0:f2}", (DateTime.Now - this.sequenceStartTime).TotalSeconds) + " s", Color.Navy);
+                //this.State = ApplicationState.Idle;
+                //this.SetSequenceHeaderState(Properties.LF10Demo.TXT_SequenceComplete, Color.Navy);
+                //this.RefreshButtonState();
             }
         }
         /// <summary>
@@ -651,7 +726,11 @@ namespace LF10Demo
                 this.buttonSuccResults.Enabled = this.lf10Results != null && this.lf10Results.Count > 0;
                 this.buttonSuccSave.Enabled = this.buttonSuccResults.Enabled;
 
-                buttonNextCapturing.Enabled = buttonPrevCapturing.Enabled = (State == ApplicationState.Scan) && (!AutoStepping);
+
+                //buttonNextCapturing.Enabled = buttonPrevCapturing.Enabled = (true);  // habilita para siempre aunque haya se haya terminado la secuencia
+                buttonNextCapturing.Enabled = buttonPrevCapturing.Enabled = (State == ApplicationState.Scan) && (true);  //modificado para que habilite los botones
+                //;::;:::buttonNextCapturing.Enabled = buttonPrevCapturing.Enabled = (State == ApplicationState.Scan) && (true);  //modificado para que habilite los botones
+                //;::;:::buttonNextCapturing.Enabled = buttonPrevCapturing.Enabled = (State == ApplicationState.Scan) && (!AutoStepping); //origen
             }
         }
         /// <summary>
@@ -661,6 +740,9 @@ namespace LF10Demo
         /// <param name="quality">The quality.</param>
         private void ShowQuality(int i, int quality)
         {
+
+            //MessageBox.Show("")
+
             if (Properties.Settings.Default.ShowQuality)
             {
                 Color fontColor = Color.Navy;
@@ -896,6 +978,8 @@ namespace LF10Demo
             this.picBoxCurRightHand.Image = Properties.Resources._4Right;
             this.SetSequenceHeaderState(Properties.LF10Demo.TXT_RightFourFingers, Color.Navy);
             this.SetScannerLeds(SegmentType.RightFourPrint, LedColor.Red, false);
+
+
         }
         /// <summary>
         /// Sets the GUI left four.
@@ -905,7 +989,8 @@ namespace LF10Demo
             this.picBoxCurLeftHand.Image = Properties.Resources._4Left;
             this.picBoxCurRightHand.Image = Properties.Resources.RightHandEmpty;
             this.SetSequenceHeaderState(Properties.LF10Demo.TXT_LeftFourFingers, Color.Navy);
-            this.SetScannerLeds(SegmentType.LeftFourPrint, LedColor.Red, false);
+            //;::;:::
+            this.SetScannerLeds(SegmentType.LeftFourPrint , LedColor.Red, false);
         }
 
         #endregion
@@ -1141,6 +1226,7 @@ namespace LF10Demo
             nLed = (int)color;
             switch (segmentType)
             {
+
                 case SegmentType.All:
                     for (int i = 0; i < 10; i++)
                     {
@@ -1584,6 +1670,7 @@ namespace LF10Demo
             //restart Sequence
             this.radioButton442.Checked = true;
             this.activeSequence = ActiveSequence.FourFourTwo;
+
             this.state = ApplicationState.Idle;
 
         }
@@ -1732,7 +1819,7 @@ namespace LF10Demo
 
         private void buttonSuccResults_Click(object sender, EventArgs e)
         {
-            ResultsView resultsView = new ResultsView();
+            ResultsView resultsView = new ResultsView(this);
             resultsView.StartPosition = FormStartPosition.CenterParent;
             resultsView.Lf10Results = this.lf10Results;
             resultsView.ShowDialog(this);
@@ -1740,9 +1827,50 @@ namespace LF10Demo
 
         private void buttonSuccSave_Click(object sender, EventArgs e)
         {
+
+            ResultsView resultsView = new ResultsView(this);
+            resultsView.StartPosition = FormStartPosition.CenterParent;
+            resultsView.Lf10Results = this.lf10Results;
+            resultsView.ShowDialog(this);
+
+            return;
+
+
+            //verificar la red
+            bool newtworkConnectionExist = false ;            
+            try
+            {
+                using (new NetworkConnection(path_fingerprint, new NetworkCredential(this.path_remote_user, this.path_remote_password)))
+                {
+                    //_directoryPath = "\\\\192.168.2.120\\utic\\PVT\\fingerprint\\3.txt";
+                    //File.Copy("D:\\2.txt", _directoryPath);                
+                    //   MessageBox.Show("hola");
+                }
+                newtworkConnectionExist = true;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+            if (!newtworkConnectionExist) {
+                MessageBox.Show("No se pudo conectar a la direccion 192.168.2.120 verifique la conexion de red");
+                return;
+            }
+
+
+            formLoading loading_ = new formLoading();
+            loading_.Show();
+
+
+
+            //ShowSplashScreen();
+
+
+
             if (lf10Results == null)
                 return;
 
+            /*
             FolderBrowserDialog dia = new FolderBrowserDialog();
             dia.Description = "Save images";
 
@@ -1750,15 +1878,40 @@ namespace LF10Demo
 
             if (res != DialogResult.OK)
                 return;
+            */
+
+
 
             try
             {
+
+                //String diaPath = "D:\\tst\\02";
+
+                //Renombra los archivos
+                Dictionary<string, string> name0 = new Dictionary<string, string>();
+                name0["Left Index"] = affiliate_id + "_left_index";
+                name0["Left Little"] = affiliate_id + "_left_little";
+                name0["Left Middle"] = affiliate_id + "_left_middle";
+                name0["Left Ring"] = affiliate_id + "_left_ring";
+                name0["Left Thumb"] = affiliate_id + "_left_thumb";
+                name0["Right Index"] = affiliate_id + "_right_index";
+                name0["Right Little"] = affiliate_id + "_right_little";
+                name0["Right Middle"] = affiliate_id + "_right_middle";
+                name0["Right Ring"] = affiliate_id + "_right_ring";
+                name0["Right Thumb"] = affiliate_id + "_right_thumb";
+                name0["LeftFourPrint"] = affiliate_id + "_left_four";
+                name0["RightFourPrint"] = affiliate_id + "_right_four";
+                name0["Thumbs"] = affiliate_id + "_thumbs";
+
+                Dictionary<string, string> name1 = new Dictionary<string, string>();
+                Dictionary<string, string> fingerCaptured = new Dictionary<string, string>();
+
 
                 //save images
                 foreach (LF10ResultItem item in lf10Results.Values)
                 {
                     Encoder encoder;
-                    String filename = dia.SelectedPath + "\\" + item.FingerName;
+                    String filename = "\\" + name0[item.FingerName];
 
                     switch (item.FingerType)
                     {
@@ -1778,6 +1931,10 @@ namespace LF10Demo
                             break;
                     }
 
+                    name1[item.FingerName] = filename;
+
+                    filename = path_local + filename;
+
                     using (MemoryStream stream = new MemoryStream())
                     {
                         item.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
@@ -1792,10 +1949,98 @@ namespace LF10Demo
 
                                 //save to disk
                                 File.WriteAllBytes(filename, outData);
+
+                                //Huellas capturadas
+                                fingerCaptured[item.FingerName] = filename;
+
                             }
                         }
                     }
+
+
                 }
+
+
+
+//Copy remote
+  string k, v, pathTarget;
+  string pathFolder = "";
+    foreach (KeyValuePair<string, string> kv in fingerCaptured)
+    {
+        k = kv.Key;
+        v = kv.Value;
+
+        //MessageBox.Show(v);
+
+        try
+        {
+
+
+
+            if (k == "LeftFourPrint" || k == "RightFourPrint" || k == "Thumbs")
+            {
+                pathFolder = path_picture;
+            }
+            else {
+                pathFolder = path_fingerprint;
+            }            
+            pathTarget = pathFolder + name1[k];
+
+            File.Copy( v , pathTarget, true);
+        }
+        catch (Exception ex)
+        {
+
+            MessageBox.Show(ex.Message);
+        }
+
+    }
+
+
+
+
+
+
+
+
+    WebClient wc = new System.Net.WebClient();
+    var json = wc.DownloadString(this.host_ip + "/api/v1/affiliate/" + affiliate_id + "/fingerprint?user_id=" + user_id + "&success=true");
+
+
+
+
+
+    loading_.Close();
+
+
+
+    MessageBox.Show("Se han guardado sus huellas correctamente");
+
+
+
+/*
+                fingerCaptured[item.FingerName] = item.FingerName;
+
+                                        Dim k, v As String
+                                        For Each kv As KeyValuePair(Of String, String) In fieldHabilitacion
+                                            k = kv.Key
+                                            v = kv.Value
+                                            specificCheckbox = oForm.Items.Item(v).Specific
+                                            specificCheckbox.Checked = False
+                                        Next
+
+                    If fi_padronField.ContainsKey(f_field) And f_check = "Y" Then
+                        fi_padronValor(f_field) = fi_padronField(f_field)
+                    End If
+*/
+
+
+
+                //File.Copy("c:\\path\\test.txt","\\\\ServerName\\C$\Folder\\test.txt");
+
+
+
+
             }
             catch (Exception ex)
             {
@@ -1804,10 +2049,226 @@ namespace LF10Demo
 
         }
 
+
+        public void huellaGuardar(ResultsView oResultsView)
+        {
+
+
+            //verificar la red
+            bool newtworkConnectionExist = false;
+            try
+            {
+                using (new NetworkConnection(path_fingerprint, new NetworkCredential(this.path_remote_user, this.path_remote_password)))
+                {
+                    //_directoryPath = "\\\\192.168.2.120\\utic\\PVT\\fingerprint\\3.txt";
+                    //File.Copy("D:\\2.txt", _directoryPath);                
+                    //   MessageBox.Show("hola");
+                }
+                newtworkConnectionExist = true;
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+            }
+            if (!newtworkConnectionExist)
+            {
+                MessageBox.Show("No se pudo conectar a la direccion 192.168.2.120 verifique la conexion de red");
+                return;
+            }
+
+
+            formLoading loading_ = new formLoading();
+            loading_.Show();
+
+
+
+
+            if (lf10Results == null)
+                return;
+
+            try
+            {
+
+                //String diaPath = "D:\\tst\\02";
+
+                //Renombra los archivos
+                Dictionary<string, string> name0 = new Dictionary<string, string>();
+                name0["Left Index"] = affiliate_id + "_left_index";
+                name0["Left Little"] = affiliate_id + "_left_little";
+                name0["Left Middle"] = affiliate_id + "_left_middle";
+                name0["Left Ring"] = affiliate_id + "_left_ring";
+                name0["Left Thumb"] = affiliate_id + "_left_thumb";
+                name0["Right Index"] = affiliate_id + "_right_index";
+                name0["Right Little"] = affiliate_id + "_right_little";
+                name0["Right Middle"] = affiliate_id + "_right_middle";
+                name0["Right Ring"] = affiliate_id + "_right_ring";
+                name0["Right Thumb"] = affiliate_id + "_right_thumb";
+                name0["LeftFourPrint"] = affiliate_id + "_left_four";
+                name0["RightFourPrint"] = affiliate_id + "_right_four";
+                name0["Thumbs"] = affiliate_id + "_thumbs";
+                name0[""] = affiliate_id + "_unknown";
+
+                Dictionary<string, string> name1 = new Dictionary<string, string>();
+                Dictionary<string, string> fingerCaptured = new Dictionary<string, string>();
+
+
+                //save images
+                foreach (LF10ResultItem item in lf10Results.Values)
+                {
+                    Encoder encoder;
+                    String filename = "\\" + name0[item.FingerName];
+
+                    //item.HandType
+
+                    switch (item.FingerType)
+                    {
+                        case SegmentType.LeftFourPrint:
+                        case SegmentType.RightFourPrint:
+                        case SegmentType.Thumbs:
+                        case SegmentType.Unknown:
+                            //save detect images as png
+                            encoder = new EncoderPng();
+                            filename += ".png";
+                            break;
+
+                        default:
+                            //save segmented finger prints as wsq                            
+                            encoder = new EncoderWsq();
+                            filename += ".wsq";
+                            break;
+                    }
+
+                    name1[item.FingerName] = filename;
+
+                    filename = path_local + filename;
+
+                    using (MemoryStream stream = new MemoryStream())
+                    {
+                        item.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+                        using (Decoder decoder = new Decoder())
+                        {
+                            using (RawImage rawImg = decoder.Decode(stream.GetBuffer()))
+                            //using (RawImage rawImg = RawImageHelperForms.FromBitmap(item.Image as Bitmap))
+                            {
+                                //convert to output format
+                                byte[] outData = encoder.Encode(rawImg);
+                                encoder.Dispose();
+
+                                //save to disk
+                                File.WriteAllBytes(filename, outData);
+
+                                //Huellas capturadas
+                                fingerCaptured[item.FingerName] = filename;
+
+                            }
+                        }
+                    }
+
+
+                }
+
+
+
+                //Copy remote
+                string k, v, pathTarget;
+                string pathFolder = "";
+                foreach (KeyValuePair<string, string> kv in fingerCaptured)
+                {
+                    k = kv.Key;
+                    v = kv.Value;
+
+                    //MessageBox.Show(v);
+
+                    try
+                    {
+
+
+
+                        if (k == "LeftFourPrint" || k == "RightFourPrint" || k == "Thumbs" || k == "" )
+                        {
+                            pathFolder = path_picture;
+                        }
+                        else
+                        {
+                            pathFolder = path_fingerprint;
+                        }
+                        pathTarget = pathFolder + name1[k];
+
+                        File.Copy(v, pathTarget, true);
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
+
+                }
+
+
+
+
+
+
+
+
+                WebClient wc = new System.Net.WebClient();
+
+                string url = this.host_ip + "/api/v1/affiliate/" + affiliate_id + "/fingerprint?user_id=" + user_id + "&success=true";
+                //MessageBox.Show(url);
+                var json = wc.DownloadString(url);
+
+
+
+
+                loading_.Close();
+
+
+
+                MessageBox.Show("Se han guardado sus huellas correctamente");
+
+
+
+                /*
+                                fingerCaptured[item.FingerName] = item.FingerName;
+
+                                                        Dim k, v As String
+                                                        For Each kv As KeyValuePair(Of String, String) In fieldHabilitacion
+                                                            k = kv.Key
+                                                            v = kv.Value
+                                                            specificCheckbox = oForm.Items.Item(v).Specific
+                                                            specificCheckbox.Checked = False
+                                                        Next
+
+                                    If fi_padronField.ContainsKey(f_field) And f_check = "Y" Then
+                                        fi_padronValor(f_field) = fi_padronField(f_field)
+                                    End If
+                */
+
+
+
+                //File.Copy("c:\\path\\test.txt","\\\\ServerName\\C$\Folder\\test.txt");
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving images: " + ex.Message);
+            }
+
+            oResultsView.Close();
+
+        }
+
+
+
+
+
         private void buttonPrevCapturing_Click(object sender, EventArgs e)
         {
-            if (this.AutoStepping)
-                return;
+            //if (this.AutoStepping)
+                //return;
 
             if (this.currentStep > 1)
             {
@@ -1831,6 +2292,7 @@ namespace LF10Demo
                         lf10Results.Remove(item.FingerName);
                     }
                 }
+                
                 RefreshGuiSteps();
             }
             this.pictureBoxCurrentCapturing.Image = null;
@@ -1838,13 +2300,23 @@ namespace LF10Demo
 
         private void buttonNextCapturing_Click(object sender, EventArgs e)
         {
-            if (this.AutoStepping)
-                return;
+            //if (this.AutoStepping)
+                //return;
 
             if (this.currentStep < this.maxSequenceSteps)
             {
+
+                if(this.currentStep==3) {
+                    var hola = "hola";
+
+                }
+
                 this.currentStep++;
+
+
+
                 RefreshGuiSteps();
+                //;::;::: remove 
                 this.ClearControlsOfLastCapturing();
                 this.pictureBoxCurrentCapturing.BackColor = Color.White;
                 if (this._scanner.IsCapturing)
@@ -1852,9 +2324,235 @@ namespace LF10Demo
             }
             else
             {
-                this.AfterSequenceDone();
+
+                this.currentStep = 3;
+                //MessageBox.Show(this.currentStep.ToString());
+
+                //;::;::: agrege este codigo
+                //this.currentStep--;
+                RefreshGuiSteps();
+                this.ClearControlsOfLastCapturing();
+                this.pictureBoxCurrentCapturing.BackColor = Color.White;
+                if (this._scanner.IsCapturing)
+                    this.State = ApplicationState.Scan;
+
+                //this.AfterSequenceDone();
             }
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBoxExtended1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanelMainSkeleton_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+
+            int nLed = 0;
+            //nLed |= (int)Dermalog.Imaging.Capturing.Enums.ZF10MultiLed.LEFT_LITTLE;
+            nLed = (int)Dermalog.Imaging.Capturing.Enums.LF10MultiLed.LEFT_LITTLE;
+            //MessageBox.Show(Dermalog.Imaging.Capturing.Enums.LF10LedColor.RED.ToString());
+
+
+
+
+
+/*
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(URL);
+
+            // Add an Accept header for JSON format.
+            client.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+
+            // List data response.
+            HttpResponseMessage response = client.GetAsync(urlParameters).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            if (response.IsSuccessStatusCode)
+            {
+                // Parse the response body.
+                var dataObjects = response.Content.ReadAsAsync<IEnumerable<DataObject>>().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
+                foreach (var d in dataObjects)
+                {
+                    Console.WriteLine("{0}", d.Name);
+                }
+            }
+            else
+            {
+                Console.WriteLine("{0} ({1})", (int)response.StatusCode, response.ReasonPhrase);
+            }
+
+            //Make any other calls using HttpClient here.
+
+            //Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
+            client.Dispose();
+
+
+*/
+//MessageBox.Show(json);
+//var example1 = control.Tag.ToString();
+
+
+            WebClient wc = new System.Net.WebClient();
+            var json = wc.DownloadString(this.host_ip + "/api/v1/record?page=1&per_page=1&sortBy[]=created_at&sortDesc[]=true&user_id=" + user_id);
+            //var jsonArray = new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(json);
+
+            var found1 = json.IndexOf("\"recordable_id\":");
+            json = json.Substring(found1+16);
+
+            var found2 = json.IndexOf(",");
+            affiliate_id = json.Substring(0,found2);
+
+
+
+                        
+            wc = new System.Net.WebClient();
+            json = wc.DownloadString(this.host_ip + "/api/v1/affiliate/" + affiliate_id);
+            var jsonArray = new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(json);
+
+
+            f_afiliado.Text = jsonArray["first_name"] + " " + jsonArray["last_name"];
+            f_ci.Text = jsonArray["identity_card"];
+            f_matricula.Text = affiliate_id;
+
+
+            //MessageBox.Show(jsonArray["first_name"]);
+            
+
+
+
+
+            //this._scanner = this._scanner;
+
+
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanelCurrenScan_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void listViewMessages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Afiliado_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {        
+
+            g gg = new g();
+
+            //Verifico afiliado url
+            String afilliated_url = this.host_ip+"/api/v1/record?page=1&per_page=1&sortBy[]=created_at&sortDesc[]=true&user_id=" + user_id;
+            bool afilliated_url_exist = false;
+            if (gg.RemoteFileExists(afilliated_url))
+            {
+                afilliated_url_exist = true;
+            }
+
+
+            if (!afilliated_url_exist)
+            {
+                MessageBox.Show("No se pudo conectar al servidor, consulte con Sistemas");
+                return;
+            }
+
+
+
+
+
+            //Obtengo affiliate_id
+            WebClient wc = new System.Net.WebClient();
+            var json = wc.DownloadString(this.host_ip + "/api/v1/record?page=1&per_page=1&sortBy[]=created_at&sortDesc[]=true&user_id=" + user_id);
+            var found1 = json.IndexOf("\"recordable_id\":");
+            json = json.Substring(found1 + 16);
+            var found2 = json.IndexOf(",");
+            affiliate_id = json.Substring(0, found2);
+
+
+            //Obtengo: 
+            wc = new System.Net.WebClient();
+            json = wc.DownloadString(this.host_ip + "/api/v1/affiliate/" + affiliate_id);
+            var jsonArray = new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(json);
+            string afiliadoNombre = jsonArray["first_name"] + " " + jsonArray["last_name"];
+            string afiliadoCi = jsonArray["identity_card"];
+
+
+
+
+            if (MessageBox.Show("Desea iniciar la Biometrizacion de:\n\r \n\r NUP_________" + affiliate_id + "\n\r NOMBRE____" + afiliadoNombre + " \n\r C.I.__________" + afiliadoCi, "Sistema",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+            {
+
+                f_matricula.Text = affiliate_id;
+                f_ci.Text = afiliadoCi;
+                f_afiliado.Text = afiliadoNombre;
+
+                btnStop.PerformClick();
+                btnStart.PerformClick();
+            }
+            else
+            {
+            }
+
+
+
+
+
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+
+
+
+
 
 }

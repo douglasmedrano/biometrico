@@ -1,4 +1,4 @@
-﻿namespace LF10Demo
+﻿namespace biometrico
 {
   partial class SplashScreen
   {
@@ -41,11 +41,11 @@
         // 
         this.label1.AutoSize = true;
         this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-        this.label1.Location = new System.Drawing.Point(3, 238);
+        this.label1.Location = new System.Drawing.Point(3, 234);
         this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(526, 13);
+        this.label1.Size = new System.Drawing.Size(522, 13);
         this.label1.TabIndex = 0;
-        this.label1.Text = "Loading...";
+        this.label1.Text = "Cargando...";
         this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
         // 
         // tableLayoutPanel1
@@ -62,7 +62,7 @@
         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
         this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-        this.tableLayoutPanel1.Size = new System.Drawing.Size(532, 256);
+        this.tableLayoutPanel1.Size = new System.Drawing.Size(528, 252);
         this.tableLayoutPanel1.TabIndex = 1;
         // 
         // pictureBox1
@@ -71,7 +71,7 @@
         this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
         this.pictureBox1.Location = new System.Drawing.Point(3, 3);
         this.pictureBox1.Name = "pictureBox1";
-        this.pictureBox1.Size = new System.Drawing.Size(526, 208);
+        this.pictureBox1.Size = new System.Drawing.Size(522, 204);
         this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
         this.pictureBox1.TabIndex = 1;
         this.pictureBox1.TabStop = false;
@@ -79,9 +79,9 @@
         // progressBar1
         // 
         this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
-        this.progressBar1.Location = new System.Drawing.Point(3, 217);
+        this.progressBar1.Location = new System.Drawing.Point(3, 213);
         this.progressBar1.Name = "progressBar1";
-        this.progressBar1.Size = new System.Drawing.Size(526, 18);
+        this.progressBar1.Size = new System.Drawing.Size(522, 18);
         this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
         this.progressBar1.TabIndex = 2;
         // 
@@ -91,7 +91,7 @@
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         this.BackColor = System.Drawing.Color.White;
         this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-        this.ClientSize = new System.Drawing.Size(532, 256);
+        this.ClientSize = new System.Drawing.Size(528, 252);
         this.ControlBox = false;
         this.Controls.Add(this.tableLayoutPanel1);
         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -101,7 +101,7 @@
         this.Name = "SplashScreen";
         this.ShowIcon = false;
         this.ShowInTaskbar = false;
-        this.Text = "LF10 Sample Application";
+        this.Text = "Biometrico v1.0";
         this.tableLayoutPanel1.ResumeLayout(false);
         this.tableLayoutPanel1.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

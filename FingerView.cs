@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace LF10Demo
+namespace biometrico
 {
   /// <summary>
   /// Simple finger view form.

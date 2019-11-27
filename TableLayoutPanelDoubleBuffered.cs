@@ -1,5 +1,5 @@
 ﻿
-namespace LF10Demo
+namespace biometrico
 {
   using System.Windows.Forms;
   /// <summary>

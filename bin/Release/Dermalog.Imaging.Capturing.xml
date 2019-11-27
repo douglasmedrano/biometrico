@@ -1,0 +1,2452 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dermalog.Imaging.Capturing</name>
+    </assembly>
+    <members>
+        <member name="T:Dermalog.Imaging.Capturing.OnStart">
+            <summary>
+            Occures on Device Start
+            </summary>
+            <param name="sender">Sender of the event</param>
+            <param name="e">Event Argument <see cref="T:Dermalog.Imaging.Capturing.DeviceEventBaseArgs">DeviceEventBaseArgs</see></param>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.OnStop">
+            <summary>
+            Occures on Device Stop
+            </summary>
+            <param name="sender">Sender of the event</param>
+            <param name="e">Event Argument <see cref="T:Dermalog.Imaging.Capturing.DeviceEventBaseArgs">DeviceEventBaseArgs</see></param>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.OnError">
+            <summary>
+            Occures on Device Error
+            </summary>
+            <param name="sender">Sender of the event</param>
+            <param name="e">Event Argument <see cref="T:Dermalog.Imaging.Capturing.ErrorEventArgs">ErrorEventArgs</see></param>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.OnWarning">
+            <summary>
+            Occures on Device Warning
+            </summary>
+            <param name="sender">Sender of the event</param>
+            <param name="e">Event Argument <see cref="T:Dermalog.Imaging.Capturing.WarningEventArgs">WarningEventArgs</see></param>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.OnImage">
+            <summary>
+            Occures on Device gets an Image
+            </summary>
+            <param name="sender">Sender of the event</param>
+            <param name="e">Event Argument <see cref="T:Dermalog.Imaging.Capturing.ImageEventArgs">ImageEventArgs</see></param>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DeviceEvent">
+            <summary>
+            Occures on Device gets an Event
+            </summary>
+            <param name="sender">Sender of the event</param>
+            <param name="e">Event Argument <see cref="T:Dermalog.Imaging.Capturing.DeviceEventArgs">DeviceEventArgs</see></param>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.OnDetect">
+            <summary>
+            Occures on Device detects an Image
+            </summary>
+            <param name="sender">Sender of the event</param>
+            <param name="e">Event Argument <see cref="T:Dermalog.Imaging.Capturing.DetectEventArgs"></see>DetectEventArgs</param>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DeviceEventBaseArgs">
+            <summary>
+            Event Argument for forward the DeviceEventBase
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceEventBaseArgs.data">
+            <summary>
+            Pointer to the Data
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceEventBaseArgs.channel">
+            <summary>
+            Device Channel
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceEventBaseArgs.#ctor(System.UInt32,System.IntPtr)">
+            <summary>
+            Initializes a new instance of the DeviceEventBaseArgs class
+            </summary>
+            <param name="channel">Device Channel</param>
+            <param name="data">Device Data</param>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceEventBaseArgs.Channel">
+            <summary>
+            Gets the Device Channel
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceEventBaseArgs.Data">
+            <summary>
+            Gets the Device Data
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DeviceEventArgs">
+            <summary>
+            Event Argument for forward the DeviceEvent
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceEventArgs.identity">
+            <summary>
+            Device Identity
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceEventArgs.eventType">
+            <summary>
+            event Type
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceEventArgs.#ctor(System.UInt32,System.IntPtr,Dermalog.Imaging.Capturing.DeviceIdentity,System.UInt32)">
+            <summary>
+            Initializes a new instance of the DeviceEventArgs class
+            </summary>
+            <param name="chanel">Device channel</param>
+            <param name="data">Device data</param>
+            <param name="id">Device Identity</param>
+            <param name="eventtype">Event Type</param>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceEventArgs.Identity">
+            <summary>
+            Gets the Device Identity
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceEventArgs.EventType">
+            <summary>
+            Gets the EventType
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.ErrorEventArgs">
+            <summary>
+            Event Argument for forward the DeviceError
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.ErrorEventArgs.errMessage">
+            <summary>
+            Error Message
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.ErrorEventArgs.internalException">
+            <summary>
+            Internal Exception
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.ErrorEventArgs.#ctor(System.UInt32,System.IntPtr,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the ErrorEventArgs class
+            </summary>
+            <param name="channel">Device Channel</param>
+            <param name="data">Device Data</param>
+            <param name="error">Error message</param>
+            <param name="exp">Internal Exception</param>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.ErrorEventArgs.Error">
+            <summary>
+            Gets the ErrorMessage
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.ErrorEventArgs.InternalException">
+            <summary>
+            Gets the internal Exception
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.WarningEventArgs">
+            <summary>
+            Event Argument for forward the DeviceWarning
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.WarningEventArgs.message">
+            <summary>
+            Warning Message
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.WarningEventArgs.#ctor(System.UInt32,System.String,System.IntPtr)">
+            <summary>
+            Initializes a new instance of the WarningEventArgs class
+            </summary>
+            <param name="channel">Device Channel</param>
+            <param name="warning">Warning Message</param>
+            <param name="data">Warning Data</param>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.WarningEventArgs.Warning">
+            <summary>
+            Gets the Warning Message
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.ImageEventArgs">
+            <summary>
+            Event Argument for forward the Images
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.ImageEventArgs.image">
+            <summary>
+            Image from device
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.ImageEventArgs.#ctor(System.UInt32,System.IntPtr,System.Byte[])">
+            <summary>
+            Initializes a new instance of the ImageEventArgs class
+            </summary>
+            <param name="channel">Device Channel</param>
+            <param name="data">Device Data</param>
+            <param name="bitmapData">Image from the device as raw bytes (BITMAPFILEHEADER)</param>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.ImageEventArgs.Image">
+            <summary>
+            Gets the submitted/detected Image from the scanner
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.ImageEventArgs.ImageData">
+            <summary>
+            Gets the submitted/detected raw image from the scanner. Usually the bytes are stored in bitmap format (BITMAPFILEHEADER or BITMAPINFOHEADER)
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DetectEventArgs">
+            <summary>
+            Event Argument for forward the Detect
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DetectEventArgs.#ctor(System.UInt32,System.IntPtr,System.Byte[])">
+            <summary>
+            Initializes a new instance of the DetectEventArgs class
+            </summary>
+            <param name="channel">Device channel</param>
+            <param name="data">Device Data</param>
+            <param name="bitmapData">Detected Image</param>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.Device">
+            <summary>
+            This class represents the capturing device.
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.Device.OnStart">
+            <summary>
+            Occures when capturing started <see cref="M:Dermalog.Imaging.Capturing.Device.Start"/>
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.Device.OnStop">
+            <summary>
+            Occures when capturing stopped <see cref="M:Dermalog.Imaging.Capturing.Device.Stop"/>
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.Device.OnImage">
+            <summary>
+            Occurs when new image on frame grabber channel captured, by asynchron capturing this is live image.
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.Device.OnError">
+            <summary>
+            Occurs if error happen by asynchron capturing
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.Device.OnDeviceEvent">
+            <summary>
+            Occurs if frame grabber send spezific event, keyboard or clean up sensor surface
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.Device.OnDetect">
+            <summary>
+            Occurs when finger detected.
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.Device.OnWarning">
+            <summary>
+            Occurs if the frame grabber generate warning during asynchron capturing
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.ClearEventSubscriptions">
+            <summary>
+            Clear all event subscriptions like OnDetect, OnImage etc
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.DeviceID">
+            <summary>
+            Gets the Device Identity
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.Channel">
+            <summary>
+            Gets or sets active channel
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.CameraType">
+            <summary>
+            Gets or sets the type of camera
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.CaptureMode">
+            <summary>
+            Gets or sets the capturing modus.
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.Property">
+            <summary>
+            Gets or sets the property of the device <see cref="P:Dermalog.Imaging.Capturing.Device.Property"/>
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.ColorMode">
+            <summary>
+            Gets/Sets the color mode for the camera.
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.ColorModes">
+            <summary>
+            Gets available color modus.<see cref="P:Dermalog.Imaging.Capturing.Device.ColorMode"/>
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.CaptureModes">
+            <summary>
+            Gets supported capture modes of a loaded device.
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.Contamination">
+            <summary>
+            Gets the contamination level of device
+            <remarks>Not all devices support this property</remarks>
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.DisplayText">
+            <summary>
+            Sets Text customer information on LCD display
+            <remarks>Not all devices support this property</remarks>
+            </summary>
+            <exception cref="T:System.NotImplementedException">The Nativ SDK doesn't support this feature. you may use older version of native SDK</exception>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">For more detail refer to <see cref="T:Dermalog.Imaging.Capturing.DeviceException"/></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.IsCapturing">
+            <summary>
+            Gets a value indicating whether determines that the device is capureing images or not
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Device.IsFreezed">
+            <summary>
+             Gets a value indicating whether the device is freezed or not
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.GetCameraTypes">
+            <summary>
+            Gets available camera types.
+            </summary>
+            <returns>An array of CameraTypes<see cref="P:Dermalog.Imaging.Capturing.Device.CameraType"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when an error happens during enumerating of camera types.</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.GetDeviceInformations">
+            <summary>
+            Gets the device information.
+            </summary>
+            <returns>Returns <see cref="T:Dermalog.Imaging.Capturing.DeviceInformations"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when there is an error getting the device information.</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.Start">
+            <summary>
+            Starts the capturing <see cref="E:Dermalog.Imaging.Capturing.Device.OnStart"/>
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.Device.Start"/> fails</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.Stop">
+            <summary>
+            Stops capturing <see cref="E:Dermalog.Imaging.Capturing.Device.OnStop"/>.
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.Device.Stop"/> fails</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.Freeze(System.Boolean)">
+            <summary>
+            Suspend stared capture process.
+            </summary>
+            <param name="status">True or False</param>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.Device.Freeze(System.Boolean)"/> fails</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.AvailableDialogs">
+            <summary>
+            Gets supported configuration dialogs.
+            </summary>
+            <returns>Array of supported dialogs <see cref="T:Dermalog.Imaging.Capturing.DialogType"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.Device.AvailableDialogs"/> fails. </exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.ShowDialog(Dermalog.Imaging.Capturing.DialogType)">
+            <summary>
+            Shows the configuration dialog.	<see cref="M:Dermalog.Imaging.Capturing.Device.AvailableDialogs"/>
+            </summary>
+            <param name="dlgType">Type of cofiguration dialog</param>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.Device.ShowDialog(Dermalog.Imaging.Capturing.DialogType)"/> fails. </exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.GetCurrentFrameInfo(Dermalog.Imaging.Capturing.FrameInfoTypes)">
+            <summary>
+            The function supplies an additional frame information within a <see cref="E:Dermalog.Imaging.Capturing.Device.OnImage"/> or <see cref="E:Dermalog.Imaging.Capturing.Device.OnDetect"/> event
+            and information relating to the current frame.
+            Now there are two provided by this function
+            LIFENESSINFO and LIFENESSINFO_1 the last structure
+            returns liveliness score and liveliness state.
+            The liveliness is defined in range -768 .. -799 an represent the current state of Dermalog Fakedetection
+            compoment.
+            </summary>
+            <param name="frameInfoType"> <see cref="T:Dermalog.Imaging.Capturing.FrameInfoTypes"/> </param>
+            <returns>An object type of <see cref="T:Dermalog.Imaging.Capturing.FrameInfoTypes"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.Device.GetCurrentFrameInfo(Dermalog.Imaging.Capturing.FrameInfoTypes)"/> fails. </exception>
+            <exception cref="T:System.Exception">Thrown when <see cref="M:Dermalog.Imaging.Capturing.Device.GetCurrentFrameInfo(Dermalog.Imaging.Capturing.FrameInfoTypes)"/> fails.</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.GetFGInfo">
+            <summary>
+            The function returns the FrameGrabber Information as a string array.
+            The information is sorted as follows: Name, Firware Version, Software Version, Hardware Version.
+            </summary>
+            <returns>Returns array of strings <see cref="T:System.String"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.Device.GetFGInfo"/> fails. </exception>
+            <exception cref="T:System.Exception">Thrown when <see cref="M:Dermalog.Imaging.Capturing.Device.GetFGInfo"/> fails.</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.GetImage">
+            <summary>
+            Capture a single image
+            </summary>
+            <returns>Capture image <see cref="T:System.Drawing.Image"/></returns> 
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.SetInternalData(System.UInt32,System.Object)">
+            <summary>
+            General interface for internal data exchange
+            </summary>
+            <param name="dataId">Data id</param>
+            <param name="data">The data to be set</param>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when data id or data are invalid</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Device.GetInternalData(System.UInt32)">
+            <summary>
+            General interface for internal data exchange
+            </summary>
+            <param name="dataId">Data id</param>
+            <returns>Internal data</returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when data id is invalid</exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.DeviceID">
+            <summary>
+            Gets the Device Identity
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.Channel">
+            <summary>
+            Gets or sets active channel
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.CameraType">
+            <summary>
+            Gets or sets the type of camera
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.CaptureMode">
+            <summary>
+            Gets or sets the capturing modus.
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.Property">
+            <summary>
+            Gets or sets the property of the device <see cref="P:Dermalog.Imaging.Capturing.DeviceBase.Property"/>
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.ColorMode">
+            <summary>
+            Gets/Sets the color mode for the camera.
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.ColorModes">
+            <summary>
+            Gets available color modus.<see cref="P:Dermalog.Imaging.Capturing.DeviceBase.ColorMode"/>
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.CaptureModes">
+            <summary>
+            Gets supported capture modes of a loaded device.
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.Contamination">
+            <summary>
+            Gets the contamination level of device
+            <remarks>Not all devices support this property</remarks>
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.DisplayText">
+            <summary>
+            Sets Text customer information on LCD display
+            <remarks>Not all devices support this property</remarks>
+            </summary>
+            <exception cref="T:System.NotImplementedException">The Nativ SDK doesn't support this feature. you may use older version of native SDK</exception>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">For more detail refer to <see cref="T:Dermalog.Imaging.Capturing.DeviceException"/></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.IsCapturing">
+            <summary>
+            Gets a value indicating whether determines that the device is capureing images or not
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceBase.IsFreezed">
+            <summary>
+             Gets a value indicating whether the device is freezed or not
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceBase.OnStart">
+            <summary>
+            Occures when capturing started <see cref="M:Dermalog.Imaging.Capturing.DeviceBase.Start"/>
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceBase.OnStop">
+            <summary>
+            Occures when capturing stopped <see cref="M:Dermalog.Imaging.Capturing.DeviceBase.Stop"/>
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceBase.OnImage">
+            <summary>
+            Occurs when new image on frame grabber channel captured, by asynchron capturing this is live image.
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceBase.OnError">
+            <summary>
+            Occurs if error happen by asynchron capturing
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceBase.OnDeviceEvent">
+            <summary>
+            Occurs if frame grabber send spezific event, keyboard or clean up sensor surface
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceBase.OnDetect">
+            <summary>
+            Occurs when finger detected.
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceBase.OnWarning">
+            <summary>
+            Occurs if the frame grabber generate warning during asynchron capturing
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceBase.GenerateException(System.UInt32)">
+            <summary>
+            Generates exception for the given error nummber.
+            </summary>
+            <param name="error">API error</param>
+            <returns>Returns a <see cref="T:Dermalog.Imaging.Capturing.DeviceException"/></returns>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DeviceDisconnectedException">
+            <summary>
+            Exception is thrown when a device is disconnected
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DeviceException">
+            <summary>
+            Represents errors that occur during using of <see cref="T:Dermalog.Imaging.Capturing.Device"/>
+            object.
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the DeviceException class
+            </summary>
+            <param name="message">Exception Message</param>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the DeviceException class
+            </summary>
+            <param name="message">Exception Message</param>
+            <param name="inner">Inner Exception</param>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceImpl.handle">
+            <summary>
+            Internal handle of capturing device.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceImpl.disposed">
+            <summary>
+            Flag to check the desposing
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceImpl.isCaptureing">
+            <summary>
+            Determines that the device is capureing images or not
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceImpl.isFreezed">
+            <summary>
+            Determines that the device is freezed or not
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceImpl.channel">
+            <summary>
+            Callbackdefault device channel
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceImpl.capMode">
+            <summary>
+            Current capure mode <see cref="P:Dermalog.Imaging.Capturing.DeviceImpl.CaptureMode"/>
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceImpl.camType">
+            <summary>
+            current camera type <see cref="P:Dermalog.Imaging.Capturing.DeviceImpl.CameraType"/>
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceImpl.deviceID">
+            <summary>
+             Device Identity for loaded device.
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.onStart">
+            <summary>
+            Callback OnStart event
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.onStop">
+            <summary>
+            Callback OnStop event
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.onImage">
+            <summary>
+            Callback OnImage event
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.onError">
+            <summary>
+            Callback OnError event
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.onFgEvent">
+            <summary>
+            Callback OnFgEvent event
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.onDetect">
+            <summary>
+            Callback OnDetect event
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.onWarning">
+            <summary>
+            Callback OnWarning event
+            </summary>       
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.Handle">
+            <summary>
+            Gets internal device handle
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.DeviceID">
+            <summary>
+            Gets the Device Identity
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.Channel">
+            <summary>
+            Gets or sets active channel
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.CameraType">
+            <summary>
+            Gets or sets the type of camera
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.CaptureMode">
+            <summary>
+            Gets or sets the capturing modus.
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.ColorMode">
+            <summary>
+            Gets/Sets the color mode for the camera.
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.ColorModes">
+            <summary>
+            Gets available color modus.<see cref="P:Dermalog.Imaging.Capturing.DeviceImpl.ColorMode"/>
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.CaptureModes">
+            <summary>
+            Gets supported capture modes of a loaded device.
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.Contamination">
+            <summary>
+            Gets the contamination level of device
+            <remarks>Not all devices support this property</remarks>
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.DisplayText">
+            <summary>
+            Sets Text customer information on LCD display
+            <remarks>Not all devices support this property</remarks>
+            </summary>
+            <exception cref="T:System.NotImplementedException">The Nativ SDK doesn't support this feature. you may use older version of native SDK</exception>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">For more detail refer to <see cref="T:Dermalog.Imaging.Capturing.DeviceException"/></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.IsCapturing">
+            <summary>
+            Gets a value indicating whether determines that the device is capureing images or not
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceImpl.IsFreezed">
+            <summary>
+             Gets a value indicating whether the device is freezed or not
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.OnStart">
+            <summary>
+            Occures when capturing started <see cref="M:Dermalog.Imaging.Capturing.DeviceImpl.Start"/>
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.OnStop">
+            <summary>
+            Occures when capturing stopped <see cref="M:Dermalog.Imaging.Capturing.DeviceImpl.Stop"/>
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.OnImage">
+            <summary>
+            Occurs when new image on frame grabber channel captured, by asynchron capturing this is live image.
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.OnError">
+            <summary>
+            Occurs if error happen by asynchron capturing
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.OnDeviceEvent">
+            <summary>
+            Occurs if frame grabber send spezific event, keyboard or clean up sensor surface
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.OnDetect">
+            <summary>
+            Occurs when finger detected.
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceImpl.OnWarning">
+            <summary>
+            Occurs if the frame grabber generate warning during asynchron capturing
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Device_onWarning(System.Int32,System.UInt32,System.Text.StringBuilder,System.IntPtr)">
+            <summary>
+            Raises on Device sends an Warning
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Device_onDetect(System.Int32,System.UInt32,System.Int32,System.IntPtr,System.IntPtr)">
+            <summary>
+            Raises on Device Detects a Image
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Device_onFgEvent(System.Int32,System.UInt32,Dermalog.Imaging.Capturing.DeviceIdentity,System.UInt32,System.IntPtr)">
+            <summary>
+            Raises on Device Framgeabber sends an Event
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Device_onError(System.Int32,System.UInt32,System.String,System.IntPtr)">
+            <summary>
+            Raises on Device Error
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Device_onImage(System.Int32,System.UInt32,System.IntPtr,System.IntPtr)">
+            <summary>
+            Raises on Device detects an Image
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Device_onStop(System.Int32,System.UInt32,System.IntPtr)">
+            <summary>
+            Raises on Device Stop
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Device_onStart(System.Int32,System.UInt32,System.IntPtr)">
+            <summary>
+            Raises on Device Start
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.#ctor(Dermalog.Imaging.Capturing.DeviceIdentity)">
+            <summary>
+            Initializes a new instance of the Device class <see cref="T:Dermalog.Imaging.Capturing.Device"/>
+            This constructor is internal. <see cref="T:Dermalog.Imaging.Capturing.DeviceManager"/> is resposible for
+            creation of a device object.
+            </summary>
+            <param name="id">Device identity <see cref="T:Dermalog.Imaging.Capturing.DeviceIdentity"/></param>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Finalize">
+            <summary>
+            Finalizes an instance of the Device class
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Dispose">
+            <summary>
+            Disposes the class
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
+            </summary>
+            <param name="disposing">If disposing equals true, the method has been called directly or indirectly by a user's code</param>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.GetCameraTypes">
+            <summary>
+            Gets available camera types.
+            </summary>
+            <returns>An array of CameraTypes<see cref="P:Dermalog.Imaging.Capturing.DeviceImpl.CameraType"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when an error happens during enumerating of camera types.</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.GetDeviceInformations">
+            <summary>
+            Gets the device information.
+            </summary>
+            <returns>Returns <see cref="T:Dermalog.Imaging.Capturing.DeviceInformations"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when there is an error getting the device information.</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Start">
+            <summary>
+            Starts the capturing <see cref="E:Dermalog.Imaging.Capturing.DeviceImpl.OnStart"/>
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.DeviceImpl.Start"/> fails</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Stop">
+            <summary>
+            Stops capturing <see cref="E:Dermalog.Imaging.Capturing.DeviceImpl.OnStop"/>.
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.DeviceImpl.Stop"/> fails</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.Freeze(System.Boolean)">
+            <summary>
+            Suspend stared capture process.
+            </summary>
+            <param name="status">True or False</param>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.DeviceImpl.Freeze(System.Boolean)"/> fails</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.AvailableDialogs">
+            <summary>
+            Gets supported configuration dialogs.
+            </summary>
+            <returns>Array of supported dialogs <see cref="T:Dermalog.Imaging.Capturing.DialogType"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.DeviceImpl.AvailableDialogs"/> fails. </exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.ShowDialog(Dermalog.Imaging.Capturing.DialogType)">
+            <summary>
+            Shows the configuration dialog.	<see cref="M:Dermalog.Imaging.Capturing.DeviceImpl.AvailableDialogs"/>
+            </summary>
+            <param name="dlgType">Type of cofiguration dialog</param>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.DeviceImpl.ShowDialog(Dermalog.Imaging.Capturing.DialogType)"/> fails. </exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceImpl.GetCurrentFrameInfo(Dermalog.Imaging.Capturing.FrameInfoTypes)">
+            <summary>
+            The function supplies an additional frame information within a <see cref="E:Dermalog.Imaging.Capturing.DeviceImpl.OnImage"/> or <see cref="E:Dermalog.Imaging.Capturing.DeviceImpl.OnDetect"/> event
+            and information relating to the current frame.
+            Now there are two provided by this function
+            LIFENESSINFO and LIFENESSINFO_1 the last structure
+            returns liveliness score and liveliness state.
+            The liveliness is defined in range -768 .. -799 an represent the current state of Dermalog Fakedetection
+            compoment.
+            </summary>
+            <param name="frameInfoType"> <see cref="T:Dermalog.Imaging.Capturing.FrameInfoTypes"/> </param>
+            <returns>An object type of <see cref="T:Dermalog.Imaging.Capturing.FrameInfoTypes"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Thrown when <see cref="M:Dermalog.Imaging.Capturing.DeviceImpl.GetCurrentFrameInfo(Dermalog.Imaging.Capturing.FrameInfoTypes)"/> fails. </exception>
+            <exception cref="T:System.Exception">Thrown when <see cref="M:Dermalog.Imaging.Capturing.DeviceImpl.GetCurrentFrameInfo(Dermalog.Imaging.Capturing.FrameInfoTypes)"/> fails.</exception>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DeviceIdentity">
+            <summary>
+            Contains the possible Types of DeviceIdentitys
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_FALCON">
+            <summary>
+            PCI - Falcon frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_C1">
+            <summary>
+            RS232 Finger Logon infinion chip
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_C2">
+            <summary>
+            USB Authentec chip
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_MVDELTA">
+            <summary>
+            PCI - MVDelta frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_P3_USB">
+            <summary>
+            P3 - USB scanner with integrated opical camera
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_HTEC">
+            <summary>
+            PCMCIA - Frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_SGEN">
+            <summary>
+            LPT or USB - Frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_V300_USB">
+            <summary>
+            R3 - USB frame grabber optical
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_VFW">
+            <summary>
+            Video for windows frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_R6">
+            <summary>
+            Dermalog R6 scanner, with integrated optical camera
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_C3">
+            <summary>
+            USB or PCMCIA touch
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_TST">
+            <summary>
+            Ethernet or USB optical contactless camera
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_C4">
+            <summary>
+            USB chip scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_R3000">
+            <summary>
+            FireWire scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_R7">
+            <summary>
+            FireWire  scanner with intergrated optical camera
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_P5">
+            <summary>
+            USB2 frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_P6">
+            <summary>
+            USB2 frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_S1">
+            <summary>
+            FireWire frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LS2_CHECK">
+            <summary>
+            FireWire frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_PLS1">
+            <summary>
+            ZF1 USB2 optical scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LS1">
+            <summary>
+            FireWire frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_PAS1">
+            <summary>
+            USB2 frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LSG">
+            <summary>
+            FireWire scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_S2">
+            <summary>
+            FireWire frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_ZFC">
+            <summary>
+            ZF scanner with card reader
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_VF1">
+            <summary>
+            VF1 four print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_VF2">
+            <summary>
+            VF2 reserved for four print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_VF3">
+            <summary>
+            VF3 reserved for four print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_VF4">
+            <summary>
+            VF4 reserved for four print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_VF5">
+            <summary>
+            VF5 reserved for four print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_VF6">
+            <summary>
+            VF6 reserved for four print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_VF7">
+            <summary>
+            VF7 reserved for four print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_VF8">
+            <summary>
+            VF8 reserved for four print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_VF9">
+            <summary>
+            VF9 reserved for four print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_VF10">
+            <summary>
+            VF10 reserved for four print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_ZF2">
+            <summary>
+            ZF2 reserved for single print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_ZF3">
+            <summary>
+            ZF3 reserved for single print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_ZF4">
+            <summary>
+            ZF4 reserved for single print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_ZF5">
+            <summary>
+            ZF5 reserved for single print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_ZF6">
+            <summary>
+            ZF6 reserved for single print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_ZF7">
+            <summary>
+            ZF7 reserved for single print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_ZF8">
+            <summary>
+            ZF8 reserved for single print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_ZF9">
+            <summary>
+            ZF9 reserved for single print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_ZF10">
+            <summary>
+            ZF10 reserved for single print scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF1">
+            <summary>(44)LF1 reserved for single print scanner </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF2">
+            <summary>LF2 reserved for single print scanner </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF3">
+            <summary>LF3 reserved for single print scanner </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF4">
+            <summary>LF4 reserved for single print scanner </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF5">
+            <summary>LF5 reserved for single print scanner </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF6">
+            <summary>LF6 reserved for single print scanner </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF7">
+            <summary>LF7 reserved for single print scanner </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF8">
+            <summary>LF8 reserved for single print scanner </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF9">
+            <summary>LF9 reserved for single print scanner </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF10">
+            <summary>(53)LF10 Dermalog LF10 USB four print scanner </summary>.
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF">
+            <summary>(54)LF Plugging, that support all dermalog scanner</summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_LF1SECURE">
+            <summary>(55)LF1 Secure dermalog scanner.</summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_ZF1">
+            <summary>(56) ZF1 alternative frame grabber</summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_FPS600">
+            <summary>(57) Pradotec FPS600</summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceIdentity.FG_TF1">
+            <summary>(58) TF1 frame grabber </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.ColorMode">
+            <summary>
+            Contains the available ColorModes
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.ColorMode.GRAY_8">
+            <summary>
+            8-bit gray images
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.ColorMode.RGB_8">
+            <summary>
+            8-bit color images: 2R-3G-2R
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.ColorMode.RGB_16">
+            <summary>
+            16-bit color images: 5R-6G-5R
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.ColorMode.RGB_24">
+            <summary>
+            24-bit color images: true color
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.ColorMode.RGB_32">
+            <summary>
+            32-bit color images: true color
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.CaptureMode">
+            <summary>
+            Contains the available CaptureModes
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.LIVE_IMAGE">
+            <summary>
+            Live image capturing
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.PLAIN_FINGER">
+            <summary>
+            Plain finger detection
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.ROLLED_FINGER">
+            <summary>
+            Rolled finger detection, some frame grabber don't support this capture mode
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.FAST_PLAIN_FINGER">
+            <summary>
+            Fast plain finger detection, some frame grabber don't support this capture mode
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.PREVIEW_IMAGE">
+            <summary>
+            Preview capture mode
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.PREVIEW_IMAGE_AUTO_DETECT">
+            <summary>
+            Preview capture mode automatic trigger
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.SLAP_FINGER_LFOUR">
+            <summary>
+            Left four-finger slap
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.SLAP_FINGER_RFOUR">
+            <summary>
+            Right four-finger slap
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.SLAP_FINGER_THUMBS">
+            <summary>
+            Both thumbs slap
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.SLAP_FINGER_LTHUMB">
+            <summary>
+            Left Thumb slap (plain)
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.SLAP_FINGER_RTHUMB">
+            <summary>
+            Right Thumb slap (plain)
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.SLAP_HAND">
+            <summary>
+            Hand-print
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.ROLLED_FINGER_LTHUMB">
+            <summary>
+            Left Thumb roll
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.ROLLED_FINGER_LINDEX">
+            <summary>
+            Left Index finger roll
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.ROLLED_FINGER_LMIDDLE">
+            <summary>
+            Left Middle finger roll
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.ROLLED_FINGER_LRING">
+            <summary>
+            Left Ring finger roll
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.ROLLED_FINGER_LLITTLE">
+            <summary>
+            Left Little finger roll
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.ROLLED_FINGER_RTHUMB">
+            <summary>
+            Right Thumb roll
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.ROLLED_FINGER_RINDEX">
+            <summary>
+            Right Index finger roll
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.ROLLED_FINGER_RMIDDLE">
+            <summary>
+            Right Middle finger roll
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.ROLLED_FINGER_RRING">
+            <summary>
+            Right Ring finger roll
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.ROLLED_FINGER_RLITTLE">
+            <summary>
+            Right Little finger roll
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.SLAP_HAND_LPALM">
+            <summary>
+            Left palm-print
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.SLAP_HAND_RPALM">
+            <summary>
+            Right palm-print
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.WRITER_PALM_LEFT">
+            <summary>
+            Left writer's palm
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.WRITER_PALM_RIGHT">
+            <summary>
+            Right writer's palm
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CaptureMode.SIGNATURE">
+            <summary>
+            Signature capture
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.PropertyType">
+            <summary>
+            Contains the available PropertyTypes
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_BRIGHTNESS">
+            <summary>
+            Image brightness
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_CONTRAST">
+            <summary>
+            Image contrast
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_HUE">
+            <summary>
+            Image hue
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_MAX_CHANNEL">
+            <summary>
+            Maximal channel count
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_EEPROM_SIZE">
+            <summary>
+            Maximal size of EEPROM on frame grabber
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_HWND">
+            <summary>
+            Handle to windows extended property
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_FAKE_DETECT">
+            <summary>
+            Fake finger detection enables
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_RED_LED">
+            <summary>
+            The red LED property for ZF1 scanner. This property is used to switch the red-LED on/off. If capturing is running the LED is blinking.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_GREEN_LED">
+            <summary>
+            The green LED property for ZF1 scanner. This property is used to switch the green-LED on/off. If capturing is running the LED is blinking.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_KEY">
+            <summary>
+            Key board. This property is used to detect key board state.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_LEDS">
+            <summary>
+            Leds control e.g. S2 scanner supports some LEDs control
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_AUTO_DETECT">
+            <summary>
+            S2 scanner supports some additional auto detection parameters
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_FAKE_THRESHOLD">
+            <summary>
+            ZF1 scanner, life detection threshold
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_LOW_CONTRAST_IMG">
+            <summary>
+            Enables to capture a low contrast images
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_FOOTSWITCH">
+            <summary>
+            A footswitch state property.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_AUTO_FOCUS">
+            <summary>
+            Camera Auto-Focus state property.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_ZOOM_FACTOR">
+            <summary>
+            A zoom factor of the camera.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_ZOOM_FACTOR_BASE">
+            <summary>
+            A zoom factor base.mantisse.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_ZOOM_FACTOR_MANTISSA">
+            <summary>
+            A zoom factor base.mantissa.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_SINGLE_IMAGE_RESOULUTION">
+            <summary>
+            An image resolution that can be captured by GetImage function. 1 for 1M (Megapixel), 2 for 2M etc.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_BEEP">
+            <summary>
+            Beep control
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_AUTO_CAPTURE_BEEP">
+            <summary>
+            Beep control
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_USE_FAST_PREVIEW_MASK">
+            <summary>
+            This property is specific for
+            ZF1Raw. The possible values are
+            <list type="bullet">
+            <item>0 – capture images by variable dose.</item>
+            <item>1 – capture black light images.</item>
+            <item>2 – capture dark images</item>
+            <item>3 – capture images with method ftrScanGetImage</item>
+            </list>
+            </summary>
+            <summary>
+            Specifies if a fast preview mask shall be used or not
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_ROTATE_AND_CROP_ROLLED_IMAGE">
+            <summary>
+            Rotate and crop rolled image
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_SIGNATURE_FILTER_SIGMA">
+            <summary>
+             sets filter size of signature smooth filter, 10000 == 1.0
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_SIGNATURE_DETECT_TIME">
+            <summary>
+            sets time between pen lift and detect event in signature mode
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_SIGNATURE_SENSOR_MODE">
+            <summary>
+            sensor mode for signatures (full frame/ lower half frame)
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_RESET_IMAGE">
+            <summary>
+            reset image in incremental modes like roll,signature
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_DESIRED_WIDTH">
+            <summary>
+            desired width of captured image
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_DESIRED_HEIGHT">
+            <summary>
+            desired height of captured image
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_AUTO_CROP_SIGNATURE">
+            <summary>
+            auto crops the signature image
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_BUTTON_LEFT_STATE">
+            <summary>
+            gets the current state of the left button (zf10 only)
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_BUTTON_RIGHT_STATE">
+            <summary>
+            gets the current state of the right button (zf10 only)
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_AVERAGE_LIVENESS_SCORE_MODE">
+            <summary>
+            activate average liveness score for all fingers
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_MEMBRANE_HANDLE_MODE">
+            <summary>
+            Enables the handling of the fingerprint membrane
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_MASK_SENSITIVITY">
+            <summary>
+            Sets the sensitivity of the fingerprint mask. The default value depends on the fingerprint scanner.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.PropertyType.FG_ROLL_FINGER_START_MODE">
+            <summary>
+            Sets the roll finger start mode. If the value is 1 (default), the finger must lie still for moment before it can be rolled.
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.CameraType">
+            <summary>
+            Contains the available CameraTypes
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CameraType.NO_CAMERA">
+            <summary>
+            No camera set on the channel
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CameraType.CHIP">
+            <summary>
+            Not optical camera, e.g. C1-chip, C2-chip
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CameraType.R3">
+            <summary>
+            Optical NTSC infrarot camera livescanner P43
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CameraType.DSP1">
+            <summary>
+            Optical PAL camara for fotos capturing
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CameraType.P3_USB">
+            <summary>
+            P3+ integratet optical camera
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CameraType.R3_USB">
+            <summary>
+            Optical NTSC infrarot camera integrated in USB scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CameraType.P3">
+            <summary>
+            Optical CCIR infrarot camera
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CameraType.V300_USB">
+            <summary>
+            Verifier 300 USB camera
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CameraType.INTERN_CAMERA">
+            <summary>
+            If the scanner use integrated camera, you don't need to call SetCamera
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.CameraType.V300">
+            <summary>
+            Verifier 300 RS camera
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DialogType">
+            <summary>
+            Dialog types for VfW
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DialogType.VIDEO_FORMAT_DLG">
+            <summary>
+            Dialog for video source
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DialogType.IMAGE_FORMAT_DLG">
+            <summary>
+            Dialog for config video format
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.FrameInfoTypes">
+            <summary>
+            This structure used by CurrentFrameInfo function
+            to get liveliness information about current frame
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.FrameInfoTypes.E_LIFENESS_INFO">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.FrameInfoTypes.E_LIFENESS_INFO_1">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.FrameInfoTypes.E_GENERAL_DATA_EXCHANGE">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.NativeInterfaceVersion">
+            <summary>
+            Version of the native C interface
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.NativeInterfaceVersion.VC3v1">
+            <summary>
+            Specifies the C interface defined in Dermalogvc.h
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.NativeInterfaceVersion.VC3v2">
+            <summary>
+            Specifies the C interface defined in DermalogVC3_api.h
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DeviceManager">
+            <summary>
+            Provides Methods for obtaining information about available capture devices.
+            It also provides method to create new instance of specific supported <see cref="T:Dermalog.Imaging.Capturing.Device"/>
+            object <seealso cref="M:Dermalog.Imaging.Capturing.DeviceManager.GetAvailableDevices"/><seealso cref="M:Dermalog.Imaging.Capturing.DeviceManager.GetDevice(Dermalog.Imaging.Capturing.DeviceIdentity)"/>
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceManager.Version">
+            <summary>
+            Gets the Version of the Device Manager
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceManager.GetAvailableDevices">
+            <summary>
+            Gets Available devices
+            </summary>
+            <returns>Returns available devices <see cref="T:Dermalog.Imaging.Capturing.DeviceIdentity"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceManagerException">occures when the selected device doesn't exist
+            or it is not connected to PC</exception>
+            <remarks>This method is not thread safe. </remarks>    
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceManager.GetDeviceIdentities">
+            <summary>
+            Gets Available devices
+            </summary>
+            <returns>Returns available DeviceIdentities <see cref="T:Dermalog.Imaging.Capturing.DeviceIdentity"/> using only NativeInterfaceVersion.VC3v2</returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceManagerException">occures when the selected device doesn't exist
+            or it is not connected to PC</exception>
+            <remarks>This method is not thread safe. </remarks>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceManager.GetDevice(Dermalog.Imaging.Capturing.DeviceIdentity)">
+            <summary>
+            Gets a Device by its Id <see cref="T:Dermalog.Imaging.Capturing.DeviceIdentity"/>
+            </summary>
+            <param name="id">Device Identity <see cref="T:Dermalog.Imaging.Capturing.DeviceIdentity"/></param>
+            <returns>Returns selected <see cref="T:Dermalog.Imaging.Capturing.Device"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">occures when the devices doesn't exist or not connected</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceManager.GetDevice(Dermalog.Imaging.Capturing.DeviceIdentity,Dermalog.Imaging.Capturing.NativeInterfaceVersion)">
+            <summary>
+            Gets a Device by its Id <see cref="T:Dermalog.Imaging.Capturing.DeviceIdentity"/> and native interface version
+            </summary>
+            <param name="id">Device Identity <see cref="T:Dermalog.Imaging.Capturing.DeviceIdentity"/></param>
+            <param name="interfaceVersion">native interface version</param>
+            <returns>Returns selected <see cref="T:Dermalog.Imaging.Capturing.Device"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">occures when the devices doesn't exist or not connected</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceManager.GetDevice(Dermalog.Imaging.Capturing.DeviceIdentity,System.Int32)">
+            <summary>
+            Gets a Device by its type Id <see cref="T:Dermalog.Imaging.Capturing.DeviceIdentity"/> and index identifier
+            Note: This method uses NativeInterfaceVersion.VC3v2
+            </summary>
+            <param name="id">Device Identity <see cref="T:Dermalog.Imaging.Capturing.DeviceIdentity"/></param>
+            <param name="deviceId">device index</param>
+            <returns>Returns selected <see cref="T:Dermalog.Imaging.Capturing.Device"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">occures when the devices doesn't exist or not connected</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceManager.GetAttachedDevices(Dermalog.Imaging.Capturing.DeviceIdentity)">
+            <summary>
+            Gets all attached devices for a specific <see cref="T:Dermalog.Imaging.Capturing.DeviceIdentity"/>
+            Note: This method uses NativeInterfaceVersion.VC3v2
+            </summary>
+            <param name="id">Device Identity <see cref="T:Dermalog.Imaging.Capturing.DeviceIdentity"/></param>
+            <returns>Returns attached <see cref="T:Dermalog.Imaging.Capturing.DeviceInformations"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">occures when the devices doesn't exist or not connected</exception>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceManager.GetAdditionalDevices(Dermalog.Imaging.Capturing.Device)">
+             <summary>
+            This Methods lists additional devices from same type connected to PC. If more than one
+            device from same type (like 2 ZF1) are connected to a PC this methode delivers
+            the <see cref="T:Dermalog.Imaging.Capturing.DeviceInformations"/> of those devices.
+             </summary>
+             <param name="device"><see cref="T:Dermalog.Imaging.Capturing.Device"/>currently loaded device <see cref="M:Dermalog.Imaging.Capturing.DeviceManager.GetDevice(Dermalog.Imaging.Capturing.DeviceIdentity)"/></param>
+             <returns>An array with <see cref="T:Dermalog.Imaging.Capturing.DeviceInformations"/></returns>
+             <remarks>To activate please refere to following methods:
+             <para><see cref="M:Dermalog.Imaging.Capturing.DeviceManager.GetActiveDevice(Dermalog.Imaging.Capturing.Device)"/></para>
+             <see cref="M:Dermalog.Imaging.Capturing.DeviceManager.SetActiveDevice(System.UInt32,Dermalog.Imaging.Capturing.Device)"/>
+             <para>These Methods are not thread safe.</para>
+             </remarks>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceManager.GetActiveDevice(Dermalog.Imaging.Capturing.Device)">
+            <summary>
+            Gets the active device index when to scanner from same type are connected
+            to pc.
+            </summary>
+            <param name="device">Currently initialized <see cref="T:Dermalog.Imaging.Capturing.Device"/></param>
+            <returns>the index of active <see cref="T:Dermalog.Imaging.Capturing.Device"/></returns>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+            <exception cref="T:System.ArgumentNullException">When the Device object is null</exception>
+            <remarks>This method is not thread safe.</remarks>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceManager.SetActiveDevice(System.UInt32,Dermalog.Imaging.Capturing.Device)">
+            <summary>
+            Sets the active <see cref="T:Dermalog.Imaging.Capturing.Device"/> to given index.
+            </summary>
+            <param name="index">The valid index of device <see cref="M:Dermalog.Imaging.Capturing.DeviceManager.GetAdditionalDevices(Dermalog.Imaging.Capturing.Device)"/></param>
+            <param name="device">A valid an instance of <see cref="T:Dermalog.Imaging.Capturing.Device"/> <seealso cref="M:Dermalog.Imaging.Capturing.DeviceManager.GetDevice(Dermalog.Imaging.Capturing.DeviceIdentity)"/></param>
+            <exception cref="T:System.IndexOutOfRangeException">The given index is out of range</exception>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">Device is not connected or available</exception>
+            <example>
+            <code source="..\Dermalog.Imaging.Capturing.Tutorial\Program.cs"/>
+            </example>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DeviceManagerException">
+            <summary>
+            Represents errors that occur during handling with
+            <see cref="T:Dermalog.Imaging.Capturing.DeviceManager"/> class.
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceManagerException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the DeviceManagerException class
+            </summary>
+            <param name="message">Exception message</param>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceManagerException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the DeviceManagerException class
+            </summary>
+            <param name="message">Exception message</param>
+            <param name="inner">Inner Exception</param>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.DeviceID">
+            <summary>
+            Gets the Device Identity
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.Channel">
+            <summary>
+            Gets or sets active channel
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.CameraType">
+            <summary>
+            Gets or sets the type of camera
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.CaptureMode">
+            <summary>
+            Gets or sets the capturing modus.
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.ColorMode">
+            <summary>
+            Gets/Sets the color mode for the camera.
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.ColorModes">
+            <summary>
+            Gets available color modus.<see cref="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.ColorMode"/>
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.CaptureModes">
+            <summary>
+            Gets supported capture modes of a loaded device.
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.Contamination">
+            <summary>
+            Gets the contamination level of device
+            <remarks>Not all devices support this property</remarks>
+            </summary>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException"></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.DisplayText">
+            <summary>
+            Sets Text customer information on LCD display
+            <remarks>Not all devices support this property</remarks>
+            </summary>
+            <exception cref="T:System.NotImplementedException">The Nativ SDK doesn't support this feature. you may use older version of native SDK</exception>
+            <exception cref="T:Dermalog.Imaging.Capturing.DeviceException">For more detail refer to <see cref="T:Dermalog.Imaging.Capturing.DeviceException"/></exception>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.IsCapturing">
+            <summary>
+            Gets a value indicating whether determines that the device is capureing images or not
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceUnitImpl.IsFreezed">
+            <summary>
+             Gets a value indicating whether the device is freezed or not
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceUnitImpl.OnStart">
+            <summary>
+            Occures when capturing started <see cref="M:Dermalog.Imaging.Capturing.DeviceUnitImpl.Start"/>
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceUnitImpl.OnStop">
+            <summary>
+            Occures when capturing stopped <see cref="M:Dermalog.Imaging.Capturing.DeviceUnitImpl.Stop"/>
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceUnitImpl.OnImage">
+            <summary>
+            Occurs when new image on frame grabber channel captured, by asynchron capturing this is live image.
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceUnitImpl.OnError">
+            <summary>
+            Occurs if error happen by asynchron capturing
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceUnitImpl.OnDeviceEvent">
+            <summary>
+            Occurs if frame grabber send spezific event, keyboard or clean up sensor surface
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceUnitImpl.OnDetect">
+            <summary>
+            Occurs when finger detected.
+            </summary>
+        </member>
+        <member name="E:Dermalog.Imaging.Capturing.DeviceUnitImpl.OnWarning">
+            <summary>
+            Occurs if the frame grabber generate warning during asynchron capturing
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DibUtil.ImageFromDibPtr(System.IntPtr)">
+            <summary>
+            Get .NET 'Bitmap' object from memory DIB via stream constructor.
+            This should work for most DIBs.
+            </summary>
+            <param name="dibPtr">Pointer to memory DIB, starting with BITMAPINFOHEADER.</param>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DibUtil.BufferToHandle(System.Byte[],System.Int32@)">
+            <summary>
+            Converts an byte array into a handle.
+            </summary>
+            <param name="imageBuffer">image (WSQ,jp2,etc) as byte array</param>
+            <param name="size">the size of allocated handle</param>
+            <returns>handle of buffer</returns>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DibUtil.ImageToBuffer(System.Drawing.Image)">
+            <summary>
+            Converts an <see cref="T:System.Drawing.Image"/> to a bitmap buffer.
+            </summary>
+            <param name="image">The image.</param>
+            <returns>returns a buffer of bitmap memory file.</returns>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DibUtil.ImageToDibPtr(System.Drawing.Image,System.Int32@)">
+            <summary>
+            Images to dib PTR.
+            </summary>
+            <param name="image">The image.</param>
+            <param name="size">size of image</param>
+            <returns>Pointer to Dib image</returns>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DibUtil.RawSerializeInto(System.Object,System.Byte[])">
+            <summary> Copy structure into Byte-Array. </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.BITMAPFILEHEADER">
+            <summary>
+            Encapsulate native <see cref="T:Dermalog.Imaging.Capturing.BITMAPFILEHEADER"/> structure.
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.BITMAPINFOHEADER">
+            <summary>
+            Encapsulate native <see cref="T:Dermalog.Imaging.Capturing.BITMAPINFOHEADER"/> structure.
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.Enums.LF10Beep">
+            <summary>
+            Sample values for the property FG_BEEP
+            </summary>    
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.Enums.LF10LedColor">
+            <summary>
+            Led  color definition for LF10 property FG_LEDS.
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.Enums.LF10Led">
+            <summary>
+            Led definition for LF10 property FG_LEDS. Used to set a single LED at a time
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.Enums.LF10MultiLed">
+            <summary>
+            Led definition for LF10 property FG_LEDS. Used to set multiple LEDs at once.
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.Enums.ZF10LedColor">
+            <summary>
+            Led  color definition for ZF10 property FG_LEDS.
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.Enums.ZF10Led">
+            <summary>
+            Led definition for ZF10 property FG_LEDS. Used to set a single LED at a time
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.Enums.ZF10MultiLed">
+            <summary>
+            Led definition for ZF10 property FG_LEDS. Used to set multiple LEDs at once.
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DeviceErrorException">
+            <summary>
+            Represents errors that occur during using of <see cref="T:Dermalog.Imaging.Capturing.Device"/> object including the errorcode.
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.DeviceErrorException.ErrorCode">
+            <summary>
+            errorcode of the exception
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.PropertyException">
+            <summary>
+            Represents errors that occur during getting/setting of
+            device properties.
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.PropertyException.#ctor(System.String)">
+            <summary>
+            creates a new instance of <see cref="T:Dermalog.Imaging.Capturing.PropertyException"/>
+            </summary>
+            <param name="message">Error message</param>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.PropetyReadOnlyException">
+            <summary>
+            Represents errors that occure during setting the readonly
+            property of device.
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.PropetyReadOnlyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the PropetyReadOnlyException class
+            </summary>
+            <param name="message">Exception Message</param>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.PropertyWriteOnlyException">
+            <summary>
+            Represents error for write only properties.
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.PropertyWriteOnlyException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Dermalog.Imaging.Capturing.PropertyWriteOnlyException"/>
+            </summary>
+            <param name="message">Error message</param>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.Property">
+            <summary>
+            Represents device properties.	Use it to set/get special device properties
+            such as turing LEDs on/off, Fake/Liveness detection
+            <remarks>Not all of devices have same property, please refer to its documentation </remarks>
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.Property.#ctor(Dermalog.Imaging.Capturing.DeviceBase)">
+            <summary>
+            Initializes a new instance of the Property class
+            </summary>
+            <param name="device">The device</param>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.Property.Item(Dermalog.Imaging.Capturing.PropertyType)">
+            <summary>
+            Gets or Sets the <see cref="T:Dermalog.Imaging.Capturing.Device"/> Properties such as LED status
+            available channels, Fake detecation etc.
+            </summary>
+            <param name="key">PropertyType of the Device Property</param>
+            <returns></returns>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_MODULE_SCHEMA">
+            The structure describes a VC3 pluggable module 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_MODULE_SCHEMA.id">
+            A VC3 module unique ID 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_MODULE_SCHEMA.path">
+            A path to the module allocated by VC3, must be freed by application 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_MODULE_SCHEMA.InterfaceVersion">
+            A module interface version. 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_UNIT_SCHEMA.id">
+            An unit ID, unique in the module scope. 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_UNIT_SCHEMA.category">
+            An unit category, finger print sensor, web-cam etc.
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_UNIT_SCHEMA.SupportedEvents">
+            Event supported by this module, insert, remove etc. 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_UNIT_SCHEMA.cap_options">
+            Capture options supported by unit, single finger print, four print etc. 
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_FEATURE_SCHEMA">
+            The structure describes a VC3 feature, module or unit 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_FEATURE_SCHEMA.limiting_conditions_type">
+            This is a type of condition e.g min, max values or enumeration 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_FEATURE_SCHEMA.Condition_ElementSize">
+            A size of elements in limiting_conditions array 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_FEATURE_SCHEMA.Condition_NumOfElements">
+            A number of elements in limiting_conditions array 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_FEATURE_SCHEMA.limiting_conditions">
+            An array of conditions 
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_FEATURE.Create(System.UInt32,System.UInt32)">
+                     * Allocated feature memory must free freed with Free
+                    *
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.VC3Api.DRMVC3_FEATURE.Create(System.UInt32,System.UInt32,System.UInt32)">
+                    * Allocated feature memory must free freed with Free
+                   *
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.VC3APIWrapper.DRM_VC3_CAPTURE_STOP_EVENT">
+            This event type will be occurred if an asynchronous capturing will be stopped. 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.VC3APIWrapper.DRM_VC3_CAPTURE_IMAGE_EVENT">
+            This event type will be occurred if a new image was captured. 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.VC3APIWrapper.DRM_VC3_CAPTURE_DETECTED_EVENT">
+            This event type will be occurred if some of a object was detected, depending on an unit, e.g. finger, face. 
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Api.VC3APIWrapper.DRM_VC3_CAPTURE_ERROR_EVENT">
+            This event type will be occurred if an error arises during capturing. 
+            The information about the error is kept in the payload.
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.Win32">
+            <summary>
+            Low level API is necessary for loading DLLs dynamically at runtime.
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.VC3LibHandler">
+            <summary>
+            Singleton class for handling VC3 dlls of different vendors.
+            It determines the name of the current module and loads the 
+            depending DLL. E.g. the vendor is Pradotec, the DLL to be loaded 
+            is PradotecVC3.dll instead of DermalogVC3.dll.
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.ErrorType">
+            <summary>
+            This type shows if the error is from VC or FG.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.ErrorType.VC">
+            <summary>
+            Video Capture Error
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.ErrorType.FG">
+            <summary>
+            Framegrabber Error
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.DeviceInformations">
+            <summary>
+            Contains common device Informations
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceInformations.name">
+            <summary>
+            Contains the name of the Device
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceInformations.version">
+            <summary>
+            Contains the version of the Device
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.DeviceInformations.index">
+            <summary>
+            Contains the index of the Device
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.DeviceInformations.ToString">
+            <summary>
+            Converts <see cref="T:Dermalog.Imaging.Capturing.DeviceInformations"/> to string
+            </summary>
+            <returns>String with DeviceInformations</returns>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.LifenessInfo">
+            <summary>
+            This class represents Liveness information
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.LifenessInfo.Score">
+            <summary>
+            Gets Liveliness score in range 0 .. 100. 0 mean fake finger, 100 mean live finger
+            </summary>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.LifenessInfo_1">
+            <summary>brief This structure used by CurrentFrameInfo function
+            to get liveliness information about curren frame
+            </summary>
+        </member>
+        <member name="P:Dermalog.Imaging.Capturing.LifenessInfo_1.State">
+            <summary>
+             Current state of fake finger detection. If the state is not zero, an error was occured during last fake detection.
+            For more information look DermalogFakeFingerDetection help file.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_NOERROR">
+            <summary>
+            error occured
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_UNKNOWN_ERR">
+            <summary>
+            Unspecified error. C interface, FG: 0x10000001, VC: 0x20000001. COM - FG: 0x90040001, VC: 0xA0040001.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_FG_BAD_HANDLER">
+            <summary>
+            Invalid frame grabber handle. C interface FG: 0x10000002, VC: 0x20000002. COM - FG: 0x90040002, VC: 0xA0040002.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_CAM_ID_UNKNOWN">
+            <summary>
+            Invalid camera ID or camera ID is not supported by the frame grabber. C interface FG: 0x10000003, VC: 0x20000003. COM - FG: 0x90040003, VC: 0xA0040003.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_CHANNEL_NO_ERR">
+            <summary>
+            Invalid channel number. C interface FG: 0x10000004, VC: 0x20000004. COM - FG: 0x90040004, VC: 0xA0040004.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_NO_VIDEO_PRESSEN">
+            <summary>
+            No video signal is available or the camera was not detected on frame grabber input, check the camera connection. C interface FG: 0x10000005, VC: 0x20000005. COM - FG: 0x90040005, VC: 0xA0040005.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_NO_CAMERA_SET">
+            <summary>
+            No camera is defined to a specific channel. C-interface FG: 0x10000006, VC: 0x20000006. COM - FG: 0x90040006, VC: 0xA0040006.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_BAD_VIDEO_MODE_ERR">
+            <summary>
+            The video mode is not supported. C interface FG: 0x10000007, VC: 0x20000007. COM - FG: 0x90040007, VC: 0xA0040007.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_COLOR_MODE_NOT_SET">
+            <summary>
+            The color mode is not set. C interface FG: 0x10000008, VC: 0x20000008. COM - FG: 0x90040008, VC: 0xA0040008.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_COLOR_MODE_BAD_ERR">
+            <summary>
+            The color mode is not supported. C interface FG: 0x10000009, VC: 0x20000009. COM - FG: 0x90040009, VC: 0xA0040009.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_DETECTION_MODE_ERR">
+            <summary>
+            The detection mode is not supported. C interface FG: 0x1000000A, VC: 0x2000000A. COM - FG: 0x9004000A, VC: 0xA004000A.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_FILTER_BAD_ERR">
+            <summary>
+            The filter is not supported. C interface FG: 0x1000000B, VC: 0x2000000B. COM - FG: 0x9004000B, VC: 0xA004000B.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_PROPERTY_BAD_ERR">
+            <summary>
+             property is not supported. C interface FG: 0x1000000C, VC: 0x2000000C. COM - FG: 0x9004000C, VC: 0xA004000C.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_OPEN_PORT_ERR">
+            <summary>
+            Failed to open COM port. C interface FG: 0x1000000D, VC: 0x2000000D. COM - FG: 0x9004000D, VC: 0xA004000D.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_FUN_NOT_SUPPORT_ERR">
+            <summary>
+            The function is not supported by the frame grabber. C interface FG: 0x1000000E, VC: 0x2000000E. COM - FG: 0x9004000E, VC: 0xA004000E.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_BAD_RESOLUTION_ERR">
+            <summary>
+            Invalid resolution. C interface FG: 0x1000000F, VC: 0x2000000F. COM - FG: 0x9004000F, VC: 0xA004000F.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_BAD_FG_ID_ERR">
+            <summary>
+            Invalid frame grabber ID. C interface FG: 0x10000010, VC: 0x20000010. COM - FG: 0x90040010, VC: 0xA0040010.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_MORE_DATA_ERR">
+            <summary>
+            More data is available, some functions copy the data to the buffer, e.g. AvailableCameras, that must be allocated by the application, if the buffer has not enough space for all data, then the function will return this error, it must be allocated more memory for this buffer. C interface FG: 0x10000011, VC: 0x20000011. COM - FG: 0x90040011, VC: 0xA0040011.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_PROPERTY_READ_ONLY">
+            <summary>
+            It is a read-only property, some frame grabber properties can be read-only, if an application tries to set such a read-only property, the function will return this error. C interface FG: 0x10000012, VC: 0x20000012. COM - FG: 0x90040012, VC: 0xA0040012.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_BAD_CAMERA_ERR">
+            <summary>
+            The camera is not supported by the frame grabber. C interface FG: 0x10000013, VC: 0x20000013. COM - FG: 0x90040013, VC: 0xA0040013.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_BAD_FG_EVENT_ERR">
+            <summary>
+            The frame grabber does not support any specific events. C interface FG: 0x10000014, VC: 0x20000014. COM - FG: 0x90040014, VC: 0xA0040014.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_SET_FILTER_ERR">
+            <summary>
+            The filter cannot be set. C interface FG: 0x10000015, VC: 0x20000015. COM - FG: 0x90040015, VC: 0xA0040015.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_FUNCTION_NOT_IMPL_ERR">
+            <summary>
+            The function is not implemented. C interface FG: 0x10000016, VC: 0x20000016. COM - FG: 0x90040016, VC: 0xA0040016.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_FG_INITIALIZE_ERR">
+            <summary>
+            The frame grabber is not initialized. C interface FG: 0x10000017, VC: 0x20000017. COM - FG: 0x90040017, VC: 0xA0040017.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_EEPROM_NOT_SUPPORT_ERR">
+            <summary>
+            The frame grabber does not support EEPROM. C-interface FG: 0x10000018, VC: 0x20000018. COM - FG: 0x90040018, VC: 0xA0040018.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ASPECT_RATIO_ERR">
+            <summary>
+            Invalid aspect ratio. C interface FG: 0x10000019, VC: 0x20000019. COM - FG: 0x90040019, VC: 0xA0040019.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_CAPTURE_TIMEOUT_ERR">
+            <summary>
+            An image capturing timeout occurs. C interface FG: 0x1000001A, VC: 0x2000001A. COM - FG: 0x9004001A, VC: 0xA004001A.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_DEVICE_INDEX_ERR">
+            <summary>
+            Invalid device index. C interface FG: 0x1000001B, VC: 0x2000001B. COM - FG: 0x9004001B, VC: 0xA004001B.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_DLG_NOT_IMPL_ERR">
+            <summary>
+            Dialog is not implemented. C interface FG: 0x1000001C, VC: 0x2000001C. COM - FG: 0x9004001C, VC: 0xA004001C.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_GET_FG_FAILED_ERR">
+            <summary>
+            Loading of the frame grabber instance from the frame grabber dll failed, the frame grabber dll is maybe corrupt. C interface FG: 0x1000001D, VC: 0x2000001D. COM - FG: 0x9004001D, VC: 0xA004001D.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_LOAD_C2_SDK_ERR">
+            <summary>
+            SDK ATSC51.dll module for C2 sensor was not found, check your installation. C interface FG: 0x1000001E, VC: 0x2000001E. COM - FG: 0x9004001E, VC: 0xA004001E.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_OLD_C2_SDK_VERSION_ERR">
+            <summary>
+            The version of SDK ATSC51.dll module is not supported by this C2 frame grabber. C interface FG: 0x1000001F, VC: 0x2000001F. COM - FG: 0x9004001F, VC: 0xA004001F.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_DECOMPRESSOR_NOT_FOUND">
+            <summary>
+            The image cannot be decompressed, the decompressor has not been found in the system. C interface FG: 0x10000020, VC: 0x20000020. COM - FG: 0x90040020, VC: 0xA0040020.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_DRV_NOT_FOUND_ERR">
+            <summary>
+            The frame grabber driver was not found in the system. C interface FG: 0x10000021, VC: 0x20000021. COM - FG: 0x90040021, VC: 0xA0040021.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_DRV_VERSION_ERR">
+            <summary>
+            The version of the frame grabber driver in the system is not compatible with the video capture version. C interface FG: 0x10000022, VC: 0x20000022. COM - FG: 0x90040022, VC: 0xA0040022.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_TST_CONNECTION_ERR">
+            <summary>
+            The connection to the TST Ethernet scanner failed, check the connection, the serial number or the scanner configuration. C interface FG: 0x10000023. COM - FG: 0x90040023, VC: 0xA0040023.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_LICENSE_ERR">
+            <summary>
+            The license is not available, check the license on your workstation. C interface FG: 0x10000024, VC: 0x20000024. COM - FG: 0x90040024 VC: 0xA0040024
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_CALIBRATION_DATA_BAD">
+            <summary>
+            The calibration data is corrupt.C interface FG: 0x10000025, VC: 0x20000025. COM - FG: 0x90040025 VC: 0xA0040025
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_DISCONNECTED_ERR">
+            <summary>
+            The scanner is disconnected from the host.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_HARDWARE_INCOMPATIBLE">
+            <summary>
+            The hardware incompatible
+            The calibration data is corrupt.C interface FG: 0x10000027, VC: 0x20000027. COM - FG: 0x90040027 VC: 0xA0040027
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_SOFTWARE_INCOMPATIBLE">
+            <summary>
+            Some of software componenten are incompotible
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_AUTO_DETECTION_ERR">
+            <summary>
+            The auto detection type is not supported by the scanner
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_INIT_LG_ERR">
+            <summery>
+            The error occured during the initialization of logging facility
+            </summery>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_NEGATIVE_IMAGE_SIZE">
+            <summary>
+            The image width or height is negative
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_PREVIEW_TRIGGER_ERR">
+            <summery>
+            The scanner is running in the preview capture mode. This function is used to trigger the images.
+            </summery>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_OUTOFMEMORY">
+            <summary>
+            Not enough memory to execute the opretion
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_OUT_OF_RANGE">
+            <summery>
+            Out of range e.g. property value
+            </summery>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_PARAM_INVALID">
+            <summary>
+            input parameters are invalid
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_PRECAL_CAL_FILE_NOT_FOUND">
+            <summary>
+            The precalculated calibrate data file was not found
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_PRECAL_CAL_FILE_FAILED_OPEN">
+            <summary>
+            Failed to open a precalculated data file
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_PRECAL_CAL_FILE_FAILED_WRITE">
+            <summary>
+            Failed to write to a precalculated data file
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_FRAME_INFO_BAD_TYPE_ID">
+            <summery>
+            The frame grabber does not support the frame information type
+            </summery>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_LIFE_DETECTION_DISABLED">
+            <summary>
+            The threshold couldn't be set because life detection isn't activated
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_LD_LOAD_MODULE_FAILED">
+            <summary>
+            Failed to load Dermalog live detection module
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_POINTER_INVALID">
+            <summary>
+            The pointer is null or invalid
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_VC_GEN_FAILURE">
+            <summary>
+            General failure regarding internal errors
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_VC_BAD_QUALITY">
+            <summery>
+            The image quality is insufficient.
+            </summery>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_VC_OPEN_SCANNER_FAILED">
+            <summery>
+            The function failed, because the scanner connection could not be established.
+            </summery>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_VC_SCANNER_NOT_READY">
+            <summery>
+            The function failed because the scanner is temporarely not ready for function call processing, e.g. the scanner initialization needs to be completed before.
+            </summery>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_VC_SCANNER_INVALID_STATE">
+            <summery>
+            The function failed because the current scanner state does not allow the function call processing.
+            </summery>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_VC_TIME_OUT">
+            <summery>
+            Capturing failed, timeout occurs.
+            </summery>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_VC_PROPERTY_SET_ONLY">
+            <summary>
+            Property is write only.
+            </summary>
+        </member>
+        <member name="F:Dermalog.Imaging.Capturing.VC3Wrapper.DRM_ERROR_VFW">
+            <summery>
+            Video for windows driver error, for more information call GetLastFGError function.
+            </summery>
+        </member>
+        <member name="T:Dermalog.Imaging.Capturing.VCErrorDefinisions">
+            <summary>
+            Class provides Error Definations / Messages
+            </summary>
+        </member>
+        <member name="M:Dermalog.Imaging.Capturing.VCErrorDefinisions.GetErrorMessage(System.Int32)">
+            <summary>
+            Gets Error Message, if the error number isnt found a gerneric error will returned
+            </summary>
+            <param name="error">error number</param>
+            <returns>Error message</returns>
+        </member>
+    </members>
+</doc>

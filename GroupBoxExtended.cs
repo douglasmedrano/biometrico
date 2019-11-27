@@ -13,7 +13,7 @@ using System.Drawing;
 
 using System.Windows.Forms;
 
-namespace LF10Demo
+namespace biometrico
 {
 
     public class GroupBoxExtended : GroupBox

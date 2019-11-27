@@ -1,4 +1,4 @@
-﻿namespace LF10Demo
+﻿namespace biometrico
 {
   partial class FingerView
   {
@@ -33,7 +33,7 @@
         this.toolStrip1 = new System.Windows.Forms.ToolStrip();
         this.toolStripButtonZoomIn = new System.Windows.Forms.ToolStripButton();
         this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-        this.pictureBox1 = new LF10Demo.PictureBoxDoubleBuffered();
+        this.pictureBox1 = new biometrico.PictureBoxDoubleBuffered();
         this.flowLayoutPanel1.SuspendLayout();
         this.toolStrip1.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();

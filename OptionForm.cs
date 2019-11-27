@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LF10Demo
+namespace biometrico
 {
     /// <summary>
     /// Simple options form.
@@ -74,6 +74,11 @@ namespace LF10Demo
         {
             this.SaveSettings();
             this.Close();
+        }
+
+        private void OptionForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

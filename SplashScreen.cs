@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace LF10Demo
+namespace biometrico
 {
   /// <summary>
   /// SplashScreen with current states of loading process.

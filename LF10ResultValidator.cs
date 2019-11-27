@@ -1,6 +1,6 @@
 ﻿using Dermalog.AFIS.FourprintSegmentation;
 
-namespace LF10Demo
+namespace biometrico
 {
     /// <summary>
     /// Class for indefication and validation of lf10 results.

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace LF10Demo
+namespace biometrico
 {
   /// <summary>
   /// Simple Form for visualisation of finger segmenation results.
@@ -10,10 +10,15 @@ namespace LF10Demo
   public partial class ResultsView : Form
   {
     private Dictionary<string, LF10ResultItem> lf10Results;
+
+
+    public MainForm osMainForm;
+
     /// <summary>
     /// Gets or sets the LF10 results.
     /// </summary>
     /// <value>The LF10 results.</value>
+    /// 
     public Dictionary<string, LF10ResultItem> Lf10Results
     {
       get { return lf10Results; }
@@ -27,8 +32,9 @@ namespace LF10Demo
     /// <summary>
     /// Initializes a new instance of the <see cref="ResultsView"/> class.
     /// </summary>
-    public ResultsView()
+    public ResultsView(MainForm o)
     {
+        this.osMainForm = o;
       InitializeComponent();
     }
 
@@ -67,6 +73,17 @@ namespace LF10Demo
         fingerView.StartPosition = FormStartPosition.CenterParent;
         fingerView.ShowDialog(this);
       }
+    }
+
+    private void button2_Click(object sender, EventArgs e)
+    {
+        this.Close();
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        this.osMainForm.huellaGuardar(this);
+
     }
 
   }

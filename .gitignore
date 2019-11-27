@@ -1,0 +1,7 @@
+*.b1s
+obj/
+*.suo
+bin/x86/Debug/biometrico.exe
+bin/x86/Debug/biometrico.pdb
+bin/x64/Debug/biometrico.exe
+bin/x64/Debug/biometrico.pdb

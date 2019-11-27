@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
 
-namespace LF10Demo
+namespace biometrico
 {
   static class Program
   {

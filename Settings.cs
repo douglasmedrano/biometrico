@@ -1,4 +1,4 @@
-﻿namespace LF10Demo.Properties {
+﻿namespace biometrico.Properties {
     
     
     // This class allows you to handle specific events on the settings class:
